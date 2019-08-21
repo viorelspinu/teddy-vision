@@ -7,8 +7,7 @@ import json
 import time
 import picamera
 import numpy as np
-from scipy.spatial import distance
-
+import pygame
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
@@ -65,7 +64,7 @@ class CloudProcessor:
             "input": {"text": text},
             "voice": {
                 "languageCode": "en-US",
-                "name": "en-US-Wavenet-A",
+                "name": "en-US-Wavenet-D",
                 "ssmlGender": "MALE"
             },
             "audioConfig": {
@@ -97,10 +96,18 @@ class CloudProcessor:
         print(data)
 
         #data_translated = self.do_translate_post(data, DUTCH_LANGUAGE_CODE)
-        # print(data_translated)
+        #print(data_translated)
 
-        mp3_base64 = self.do_text_to_speech_post(data)
-        self.decode_text_to_file_as_base64(mp3_base64, "out.mp3")
+        mp3_base64 = self.do_text_to_speech_post("I see:" + data)
+        self.decode_text_to_file_as_base64(mp3_base64, "out.mp3")        
+        pygame.mixer.init()
+        os.system("ffmpeg -y -i ./out.mp3 out.wav")
+        pygame.mixer.music.load('./out.wav')
+        pygame.mixer.music.play()
+#        while pygame.mixer.music.get_busy() == True:
+#            time.sleep(10)
+#            continue
+        print("done playing")
 
     def run(self):
         self.process_photo()
