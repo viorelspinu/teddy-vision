@@ -3,7 +3,7 @@ from picamera import PiCamera
 import base64
 import requests
 import os
-import json
+import simplejson as json
 import time
 import picamera
 import numpy as np
@@ -26,7 +26,7 @@ class CloudProcessor:
             return base64.b64encode(image_file.read())
 
     def decode_text_to_file_as_base64(self, text, file_path):
-        with open(file_path, "w") as out_file:
+        with open(file_path, "wb") as out_file:
             out_file.write(base64.b64decode(text))
             out_file.close()
 
