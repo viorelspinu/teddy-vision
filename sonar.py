@@ -3,7 +3,8 @@ import time
 import RPi.GPIO as GPIO
 from camera import Camera
 from cloud_processor import CloudProcessor
-import random
+from rgb import RGBLed
+from sound import SoundProcessor
 
 # Use BCM GPIO references
 # instead of physical pin numbers
@@ -15,6 +16,7 @@ GPIO_TRIGECHO = 15
 
 camera = Camera()
 cloud_processor = CloudProcessor()
+led = RGBLed()
 
 
 def measure():
@@ -34,13 +36,30 @@ def measure():
     time.sleep(0.1)
     return distance
 
+
+led.set_color(0, 0, 0)
+hint_closer_triggered = False
+
 try:
     while True:
         distance = measure()
-        print(distance)
+#        print(distance)
         if (distance < 35):
+            led.set_color(1, 0, 0)
+            SoundProcessor.getInstance().play("./mp3/keep_it_still.mp3", True)
             camera.take_photo()
+            led.set_color(0, 1, 0)
+            SoundProcessor.getInstance().play("./mp3/done_have_to_think.mp3", True)
             cloud_processor.process_photo()
+        else:
+            led.set_color(0, 0, 1)
+            if (distance < 70):
+                if (not hint_closer_triggered):
+                    print(SoundProcessor.getInstance().done_playing())
+                    SoundProcessor.getInstance().play("./mp3/close_please.mp3", False)
+                    hint_closer_triggered = True
+            else:
+                hint_closer_triggered = False
         time.sleep(0.01)
 
 except KeyboardInterrupt:

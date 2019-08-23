@@ -1,13 +1,11 @@
 from time import sleep
-from picamera import PiCamera
 import base64
 import requests
 import os
 import simplejson as json
 import time
-import picamera
 import numpy as np
-import pygame
+from sound import SoundProcessor
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
@@ -20,6 +18,11 @@ TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1/text:synthesize?key
 
 
 class CloudProcessor:
+
+    sound_processor = None
+
+    def __init__(self):
+        self.sound_processor = SoundProcessor.getInstance()
 
     def encode_file_as_base64(self, image_path):
         with open(image_path, "rb") as image_file:
@@ -98,15 +101,9 @@ class CloudProcessor:
         #data_translated = self.do_translate_post(data, DUTCH_LANGUAGE_CODE)
         # print(data_translated)
 
-        mp3_base64 = self.do_text_to_speech_post("I see:" + data)
+        mp3_base64 = self.do_text_to_speech_post("I have seen:" + data)
         self.decode_text_to_file_as_base64(mp3_base64, "out.mp3")
-        pygame.mixer.init()
-        os.system("ffmpeg -y -i ./out.mp3 out.wav")
-        pygame.mixer.music.load('./out.wav')
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy() == True:
-            time.sleep(1)
-        print("done playing")
+        self.sound_processor.play("./out.mp3")
 
     def run(self):
         self.process_photo()
