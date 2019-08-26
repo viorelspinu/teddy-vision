@@ -45,10 +45,10 @@ try:
         distance = measure()
 #        print(distance)
         if (distance < 35):
-            led.set_color(1, 0, 0)
+            led.set_color(0, 1, 0)
             SoundProcessor.getInstance().play("./mp3/keep_it_still.mp3", True)
             camera.take_photo()
-            led.set_color(0, 1, 0)
+            led.set_color(1, 0, 0)
             SoundProcessor.getInstance().play("./mp3/done_have_to_think.mp3", True)
             cloud_processor.process_photo()
         else:

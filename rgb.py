@@ -13,6 +13,7 @@ class RGBLed:
         GPIO.setup(24, GPIO.OUT)
 
     def set_color(self, r, g, b):      
-        GPIO.output(18, r)
-        GPIO.output(23, g)
-        GPIO.output(24, b)
+        GPIO.output(23, r)
+        GPIO.output(24, g)
+        GPIO.output(18, b)
+        
