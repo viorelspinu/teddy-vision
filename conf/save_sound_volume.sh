@@ -1,0 +1,1 @@
+alsactl --file ./asound.state store
