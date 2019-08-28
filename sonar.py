@@ -16,7 +16,7 @@ class Sonar:
         GPIO_TRIGECHO = 15
         Sonar.__instance = self
 
-    def measure():
+    def measure(self):
         start = time.time()
 
         GPIO.setup(GPIO_TRIGECHO, GPIO.IN)
