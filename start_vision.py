@@ -19,17 +19,17 @@ try:
         print(distance)
         if (distance < 35):
             led.set_color(0, 1, 0)
-            SoundProcessor.getInstance().play("./mp3/keep_it_still.mp3", True)
+            SoundProcessor.getInstance().play("./wav/keep_it_still.wav", True)
             camera.take_photo()
             led.set_color(1, 0, 0)
-            SoundProcessor.getInstance().play("./mp3/done_have_to_think.mp3", True)
+            SoundProcessor.getInstance().play("./wav/done_have_to_think.wav", True)
             cloud_processor.process_photo()
         else:
             led.set_color(0, 0, 1)
             if (distance < 70):
                 if (not hint_closer_triggered):
                     print(SoundProcessor.getInstance().done_playing())
-                    SoundProcessor.getInstance().play("./mp3/close_please.mp3", False)
+                    SoundProcessor.getInstance().play("./wav/close_please.wav", False)
                     hint_closer_triggered = True
             else:
                 hint_closer_triggered = False
