@@ -16,7 +16,7 @@ hint_closer_triggered = False
 try:
     while True:
         distance = Sonar.getInstance().measure()
-#        print(distance)
+        print(distance)
         if (distance < 35):
             led.set_color(0, 1, 0)
             SoundProcessor.getInstance().play("./mp3/keep_it_still.mp3", True)
