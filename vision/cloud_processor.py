@@ -5,7 +5,7 @@ import os
 import simplejson as json
 import time
 import numpy as np
-from common.sound import SoundProcessor
+from sound.sound import SoundProcessor
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
