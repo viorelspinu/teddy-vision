@@ -3,6 +3,7 @@ from sound_processor import SoundProcessor
 from cloud_processor import CloudProcessor
 from rgb import RGBLed
 from sonar import Sonar
+import time
 
 
 sonar = Sonar.getInstance()
