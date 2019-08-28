@@ -1,7 +1,5 @@
-
 import pygame
 import time
-
 
 class SoundProcessor:
     __instance = None
