@@ -30,3 +30,6 @@ class Sonar:
         distance = (elapsed * 34300)/2.0
         time.sleep(0.1)
         return distance
+    
+    def cleanup(self):
+        GPIO.cleanup()
