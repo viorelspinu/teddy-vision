@@ -3,7 +3,7 @@ from picamera import PiCamera
 
 class Camera:
     def __init__(self):
-        camera = PiCamera()
+        self.camera = PiCamera()
 
     def take_photo(self):
         print("PHOTO START")
