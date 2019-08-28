@@ -76,7 +76,11 @@ class CloudProcessor:
         }
         r = requests.post(TEXT_TO_SPEECH_URL, data=json.dumps(json_data))
         r_json = r.json()
-        r_text = r_json['audioContent'].encode('utf-8')
+        try:
+            r_text = r_json['audioContent'].encode('utf-8')
+        except:
+            print ("Something went wrong when calling the TTS API. Server response below:")
+            print(r_json)
 
         return r_text
 
