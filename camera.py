@@ -2,7 +2,8 @@ from time import sleep
 from picamera import PiCamera
 
 class Camera:
-    camera = PiCamera()
+    def __init__(self):
+        camera = PiCamera()
 
     def take_photo(self):
         print("PHOTO START")
