@@ -1,1 +1,1 @@
-amixer sset 'PCM' 90%
+amixer sset 'PCM' 85%
