@@ -3,7 +3,7 @@ import wave
 import struct
 import math
 
-RESPEAKER_RATE = 16000
+RESPEAKER_RATE = 44100
 RESPEAKER_CHANNELS = 1
 RESPEAKER_WIDTH = 2
 # run getDeviceInfo.py to get index
