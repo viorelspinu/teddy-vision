@@ -4,7 +4,7 @@ from cloud_processor import CloudProcessor
 from rgb import RGBLed
 from sonar import Sonar
 import time
-
+import RPi.GPIO as GPIO
 
 sonar = Sonar.getInstance()
 camera = Camera()
