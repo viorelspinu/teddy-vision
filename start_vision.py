@@ -1,7 +1,7 @@
 from camera import Camera
+from sound import SoundProcessor
 from cloud_processor import CloudProcessor
 from rgb import RGBLed
-from sound import SoundProcessor
 from sonar import Sonar
 
 
