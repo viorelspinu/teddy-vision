@@ -1,3 +1,3 @@
+sudo apt-get update
 sudo apt-get -yq install git
-git clone https://github.com/viorelspinu/teddy-vision.git
-cd teddy-vision
+sudo apt-get -yq install python-picamera python3-picamera
