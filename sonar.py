@@ -13,17 +13,17 @@ class Sonar:
 
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
-        GPIO_TRIGECHO = 15
+        self.GPIO_TRIGECHO = 15
         Sonar.__instance = self
 
     def measure(self):
         start = time.time()
 
-        GPIO.setup(GPIO_TRIGECHO, GPIO.IN)
-        while GPIO.input(GPIO_TRIGECHO) == 0:
+        GPIO.setup(self.GPIO_TRIGECHO, GPIO.IN)
+        while GPIO.input(self.GPIO_TRIGECHO) == 0:
             start = time.time()
 
-        while GPIO.input(GPIO_TRIGECHO) == 1:
+        while GPIO.input(self.GPIO_TRIGECHO) == 1:
             stop = time.time()
 
         elapsed = stop-start
