@@ -1,4 +1,7 @@
 #!/bin/bash
+cd ./conf
+./restore_sound_volume.sh
+cd ..
 
 while true
 do
