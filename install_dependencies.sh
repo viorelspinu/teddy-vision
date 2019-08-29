@@ -6,3 +6,5 @@ sudo apt-get -yq install  python-requests
 sudo apt-get -yq install  python-simplejson
 sudo apt-get -yq install  python-pygame
 sudo apt-get -yq install  python-pyaudio
+sudo apt-get -yq install python-pyaudio python3-pyaudio sox
+pip install pyaudio --user
