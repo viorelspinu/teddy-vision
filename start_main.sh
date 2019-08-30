@@ -3,7 +3,10 @@ cd ./conf
 ./restore_sound_volume.sh
 cd ..
 amixer sset 'PCM' 100%
-./export_google_api_key.sh
+
+#go to https://console.developers.google.com/apis/credentials
+export GOOGLE_API_KEY=__YOUR_GOOGLE_API_KEY___
+
 
 while true
 do
