@@ -1,18 +1,21 @@
+from local_communication_service import LocalCommunicationService as local_communication_service
 import snowboydecoder
 import os
+import sys
+sys.path.append('../')
 
 interrupted = False
 
 
 def detected_teddy():
     print "Teddy Detected"
-    write_hotword("teddy")
+    local_communication_service.getInstance().write_hotword("teddy")
     terminate_detector()
 
 
 def detected_explore():
     print "Explore Detected"
-    write_hotword("explore")
+    local_communication_service.getInstance().write_hotword("explore")
     terminate_detector()
 
 
@@ -20,11 +23,6 @@ def terminate_detector():
     detector.terminate()
     global interrupted
     interrupted = True
-
-def write_hotword(hotword):
-    f = open("hotword.txt", "w")
-    f.write(hotword)
-    f.close()
 
 
 def interrupt_callback():
