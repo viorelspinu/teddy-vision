@@ -11,7 +11,8 @@ hotword = local_communication_service.getInstance().read_hotword()
 
 
 if ("teddy" == hotword):
-    SoundProcessor.getInstance().play("./wav/yes.wav", True)
+    #SoundProcessor.getInstance().play("./wav/yes.wav", True)
+    os.system("aplay ./wav/yes.wav")
     os.system("./push_to_talk.sh")
 
 if ("explore" == hotword):
