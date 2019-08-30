@@ -14,6 +14,7 @@ cloud_processor = CloudProcessor()
 led = RGBLed()
 
 if ("teddy" == hotword):
+    SoundProcessor.getInstance().play("./wav/yes.wav", True)
     os.system("./push_to_talk.sh")
 
 if ("explore" == hotword):
