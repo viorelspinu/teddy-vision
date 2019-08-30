@@ -45,7 +45,7 @@ class WaitForTriggerService:
                 self.detected_explore()
             
             #print (abs(self.__old_distance - distance))
-            prind(distance)
+            print(distance)
 
             self.__old_distance = distance
 
