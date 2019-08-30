@@ -10,6 +10,8 @@ class RGBLedService:
     def getInstance():
         if RGBLedService.__instance == None:
             RGBLedService()
+        print("RGBLedService.__instance")
+        print(RGBLedService.__instance)
         return RGBLedService.__instance
 
     def __init__(self):
