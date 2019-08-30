@@ -19,6 +19,10 @@ class RunActionOnHotword:
             os.system("aplay ./wav/french.wav")
             print("will update configuration file with French")
 
+        if ("english" == hotword):
+            os.system("aplay ./wav/english.wav")
+            print("will update configuration file with English")
+
 
 run_action_on_hotword = RunActionOnHotword()
 run_action_on_hotword.run()
