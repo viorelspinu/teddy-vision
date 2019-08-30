@@ -3,6 +3,7 @@ cd ./conf
 ./restore_sound_volume.sh
 cd ..
 amixer sset 'PCM' 100%
+./export_google_api_key.sh
 
 while true
 do
