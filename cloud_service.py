@@ -17,7 +17,7 @@ TRANSLATE_URL = "https://translation.googleapis.com/language/translate/v2?key=" 
 TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1/text:synthesize?key=" + API_KEY
 
 
-class CloudProcessor:
+class CloudService:
 
     sound_processor = None
 
@@ -79,18 +79,13 @@ class CloudProcessor:
         try:
             r_text = r_json['audioContent'].encode('utf-8')
         except:
-            print ("Something went wrong when calling the TTS API. Server response below:")
+            print("Something went wrong when calling the TTS API. Server response below:")
             print(r_json)
 
         return r_text
 
-    def process_photo(self):
-        #camera = PiCamera()
-        #camera.resolution = (1024, 768)
-        # camera.start_preview()
-        # sleep(0)
-        # camera.capture("photo.jpg")
-        vision_response = self.do_vision_post("photo.jpg")
+    def process_photo(self, photo_file):
+        vision_response = self.do_vision_post(photo_file)
         json_vision_response = json.loads(vision_response)
         try:
             rows = json_vision_response['responses'][0]['labelAnnotations']
@@ -108,10 +103,3 @@ class CloudProcessor:
         mp3_base64 = self.do_text_to_speech_post("I have seen:" + data)
         self.decode_text_to_file_as_base64(mp3_base64, "out.mp3")
         self.sound_processor.play("./out.mp3")
-
-    def run(self):
-        self.process_photo()
-
-
-if __name__ == '__main__':
-    CloudProcessor().run()

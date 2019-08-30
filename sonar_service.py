@@ -2,7 +2,7 @@ import time
 import RPi.GPIO as GPIO
 
 
-class Sonar:
+class SonarService:
     __instance = None
 
     @staticmethod

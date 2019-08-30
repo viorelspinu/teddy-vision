@@ -7,16 +7,6 @@ from rgb import RGBLed
 
 
 class VisionService:
-    __instance = None
-
-    @staticmethod
-    def getInstance():
-        if VisionService.__instance == None:
-            VisionService()
-        return VisionService.__instance
-
-    def __init__(self):
-        VisionService.__instance = self
 
     def do_vision(self):
         camera = Camera()

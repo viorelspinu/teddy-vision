@@ -8,6 +8,8 @@ export PATH=$PATH://home/pi/.local/bin/
 
 export FILE_SECRETS_PATH=""
 
+cd ..
+
 google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-prototype \
       --scope https://www.googleapis.com/auth/gcm \
       --save --headless --client-secrets $FILE_SECRETS_PATH

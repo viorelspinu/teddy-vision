@@ -1,3 +1,4 @@
+cd ..
 sudo apt-get update
 sudo apt-get upgrade
 git clone https://github.com/respeaker/seeed-voicecard.git
