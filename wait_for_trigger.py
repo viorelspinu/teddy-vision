@@ -50,7 +50,7 @@ class WaitForTriggerService:
             distance_diff = abs(distance - self.__old_distance)
             
             if (distance_diff < 50):
-                self.__distance_variantion = self.__distance_variantion - 50
+                self.__distance_variantion = self.__distance_variantion - 10
                 if (self.__distance_variantion < 0):
                     self.__distance_variantion = 0
             else:
