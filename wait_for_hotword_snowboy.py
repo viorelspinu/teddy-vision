@@ -6,7 +6,6 @@ import snowboydecoder
 from local_communication_service import LocalCommunicationService as local_communication_service
 
 
-
 interrupted = False
 
 
@@ -33,7 +32,7 @@ def interrupt_callback():
     return interrupted
 
 
-models = ["./t.model", "./explore.mdl"]
+models = ["./teddy.mdl", "./explore.mdl"]
 
 detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
 
