@@ -8,7 +8,8 @@ class RGBLedService:
 
     @staticmethod
     def getInstance():
-        if RGBLedService.__instance == None:
+        if (RGBLedService.__instance == None):
+            print("init")    
             RGBLedService()
         print("RGBLedService.__instance")
         print(RGBLedService.__instance)
