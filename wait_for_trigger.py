@@ -1,10 +1,12 @@
+
+import sys
+sys.path.append('./snowboy')
+
+
 from sonar_service import SonarService
 from local_communication_service import LocalCommunicationService as local_communication_service
 import snowboydecoder
 import os
-
-import sys
-sys.path.append('./snowboy')
 
 
 class WaitForTriggerService:
