@@ -28,7 +28,7 @@ class RecordAudioService:
     def record(self):
         self.stream = self.p.open(
             rate=self.RESPEAKER_RATE,
-            format=self.p.get_format_from_width(RESPEAKER_WIDTH),
+            format=self.p.get_format_from_width(self.RESPEAKER_WIDTH),
             channels=self.RESPEAKER_CHANNELS,
             input=True,
             input_device_index=self.RESPEAKER_INDEX,)
@@ -58,7 +58,7 @@ class RecordAudioService:
 
         wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
         wf.setnchannels(RESPEAKER_CHANNELS)
-        wf.setsampwidth(self.p.get_sample_size(self.p.get_format_from_width(RESPEAKER_WIDTH)))
+        wf.setsampwidth(self.p.get_sample_size(self.p.get_format_from_width(self.RESPEAKER_WIDTH)))
         wf.setframerate(RESPEAKER_RATE)
         wf.writeframes(b''.join(frames))
         wf.close()
