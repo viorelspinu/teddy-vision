@@ -3,7 +3,7 @@ import time
 import random
 
 
-class RGBLedService:
+class RGBLedService: 
     __instance = None
 
     @staticmethod
