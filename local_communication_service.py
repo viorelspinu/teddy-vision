@@ -11,11 +11,11 @@ class LocalCommunicationService:
     def __init__(self):
         LocalCommunicationService.__instance = self
 
-    def write_hotword(hotword):
+    def write_hotword(self, hotword):
         with open(self.__hotword_file, "w") as f:
             f.write(hotword)
 
-    def read_hotword():
+    def read_hotword(self):
         ret = None
         with open(self.__hotword_file, "r") as f:
             ret = f.readline()
