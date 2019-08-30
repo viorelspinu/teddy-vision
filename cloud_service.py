@@ -112,7 +112,7 @@ class CloudService:
         #html_parser = HTMLParser()
         #data_translated = html_parser.unescape(data_translated)
 
-        print(data_translated)
+        #print(data_translated)
 
         mp3_base64 = self.do_text_to_speech_post(data_translated, tts_language_code, tts_voice_code)
 
