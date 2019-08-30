@@ -1,5 +1,7 @@
 
 import os
+import threading
+import time
 
 from local_communication_service import LocalCommunicationService as local_communication_service
 from sonar_service import SonarService
@@ -28,8 +30,16 @@ class WaitForTriggerService:
     def interrupt_callback(self):
         return self.__interrupted
 
+    def watch_sonar():
+        distance = self.sonar_service.measure()
+        print(distance)
+        time.sleep(0.1)
+
+
     def main(self):
-        sonar_service = SonarService.getInstance()
+        self.sonar_service = SonarService.getInstance()
+
+        sonar_thread =  threading.Thread(target=self.watch_sonar, args=(1,), daemon=True)
 
         models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl"]
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
