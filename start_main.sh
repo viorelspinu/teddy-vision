@@ -12,7 +12,6 @@ while true
 do
 python ./wait_for_hotword_snowboy.py
 
-
 python ./run_action_on_hotword.py
 
 sleep 0.5

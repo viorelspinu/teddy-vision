@@ -9,15 +9,15 @@ import time
 
 hotword = local_communication_service.getInstance().read_hotword()
 
-camera = Camera()
-cloud_processor = CloudProcessor()
-led = RGBLed()
 
 if ("teddy" == hotword):
     SoundProcessor.getInstance().play("./wav/yes.wav", True)
     os.system("./push_to_talk.sh")
 
 if ("explore" == hotword):
+    camera = Camera()
+    cloud_processor = CloudProcessor()
+    led = RGBLed()
     led.set_color(0, 1, 0)
     SoundProcessor.getInstance().play("./wav/keep_it_still.wav", True)
     camera.take_photo()
