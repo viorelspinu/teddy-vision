@@ -16,6 +16,7 @@ class RunActionOnHotword:
             vision_service.do_vision()
 
         if ("french" == hotword):
+            os.system("aplay ./wav/french.wav")
             print("will update configuration file with French")
 
 
