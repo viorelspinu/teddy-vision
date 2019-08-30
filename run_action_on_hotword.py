@@ -3,7 +3,7 @@ from local_communication_service import LocalCommunicationService as local_commu
 #from camera import Camera
 #from sound_processor import SoundProcessor
 #from cloud_processor import CloudProcessor
-f#rom rgb import RGBLed
+#from rgb import RGBLed
 
 
 hotword = local_communication_service.getInstance().read_hotword()
