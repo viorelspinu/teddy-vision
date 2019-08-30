@@ -12,6 +12,7 @@ from rgb_led_service import RGBLedService
 class WaitForTriggerService:
     __interrupted = False
     __small_distance_sonar_counter = 0
+    __old_distance = 0
 
     def detected_teddy(self):
         print "Teddy Detected"
@@ -42,9 +43,10 @@ class WaitForTriggerService:
 
             if (self.__small_distance_sonar_counter > 3):
                 self.detected_explore()
+            
+            print (abs(self.__old_distance - distance))
 
-            print(distance)
-            time.sleep(0.01)
+            self.__old_distance = distance
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
