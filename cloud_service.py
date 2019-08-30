@@ -5,7 +5,7 @@ import os
 import simplejson as json
 import time
 import numpy as np
-from sound_processor import SoundProcessor
+from sound_service import SoundService
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
@@ -19,10 +19,8 @@ TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1/text:synthesize?key
 
 class CloudService:
 
-    sound_processor = None
-
     def __init__(self):
-        self.sound_processor = SoundProcessor.getInstance()
+        self.sound_service = SoundService.getInstance()
 
     def encode_file_as_base64(self, image_path):
         with open(image_path, "rb") as image_file:
@@ -102,4 +100,4 @@ class CloudService:
 
         mp3_base64 = self.do_text_to_speech_post("I have seen:" + data)
         self.decode_text_to_file_as_base64(mp3_base64, "out.mp3")
-        self.sound_processor.play("./out.mp3")
+        self.sound_service.play("./out.mp3")
