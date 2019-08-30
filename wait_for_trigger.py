@@ -54,7 +54,7 @@ class WaitForTriggerService:
             else:
                 self.__distance_variantion = self.__distance_variantion + distance_diff
             self.__old_distance = distance
-            print(distance_diff)
+            print(self.__distance_variantion)
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
