@@ -1,7 +1,7 @@
 cd conf
 ./restore_sound_volume.sh
 cd ..
-python ./record_respearker.py
+python ./record_audio_service.py
 ffmpeg -i ./hello.wav -ar 11025 -ac 2 output.wav -y
 aplay ./wav/one_sec.wav
 export PROJECT_ID=teddy-assistant
