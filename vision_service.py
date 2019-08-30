@@ -18,6 +18,6 @@ class VisionService:
         led_service.set_color(1, 0, 0)
         SoundService.getInstance().play("./wav/done_have_to_think.wav")
         cloud_processor.process_photo("photo.jpg", "vision_out.mp3")
-        os.system("ffmpeg -i ./vision_out.mp3 ./vision_out.wav -y")
+        os.system("ffmpeg -i ./vision_out.mp3 ./vision_out.wav -y > /dev/null 2>&1 < /dev/null")
         SoundService.getInstance().play("./vision_out.wav")
 
