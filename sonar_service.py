@@ -7,14 +7,14 @@ class SonarService:
 
     @staticmethod
     def getInstance():
-        if Sonar.__instance == None:
-            Sonar()
-        return Sonar.__instance
+        if SonarService.__instance == None:
+            SonarService()
+        return SonarService.__instance
 
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
         self.GPIO_TRIGECHO = 15
-        Sonar.__instance = self
+        SonarService.__instance = self
 
     def measure(self):
         start = time.time()

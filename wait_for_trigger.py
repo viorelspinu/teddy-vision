@@ -8,7 +8,6 @@ from local_communication_service import LocalCommunicationService as local_commu
 from sonar_service import SonarService
 
 
-
 class WaitForTriggerService:
     __interrupted = False
 
