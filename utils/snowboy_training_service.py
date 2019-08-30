@@ -10,7 +10,10 @@ endpoint = "https://snowboy.kitt.ai/api/v1/train/"
 
 #your snowboy api key, get it from https://snowboy.kitt.ai/dashboard
 #check https://pimylifeup.com/raspberry-pi-snowboy/ if not clear how to do that
-token = "ENTER_TOKEN"
+token = os.environ['SNOWBOY_API_KEY']
+if (token == None):
+    print ("export SNOWBOY_API_KEY=__api_key__")
+
 
 hotword_name = "teddy"
 
