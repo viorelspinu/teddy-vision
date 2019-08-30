@@ -1,6 +1,7 @@
 import pygame
 import time
 
+
 class SoundProcessor:
     __instance = None
 
@@ -15,10 +16,10 @@ class SoundProcessor:
             raise Exception("This class is a singleton!")
         else:
             SoundProcessor.__instance = self
+            pygame.mixer.init()
 
     def play(self, mp3_file_path, blocking=True):
         print("playing")
-        pygame.mixer.init()
         pygame.mixer.music.load(mp3_file_path)
         pygame.mixer.music.play()
         if (blocking):
@@ -27,7 +28,7 @@ class SoundProcessor:
         print("done playing")
 
     def done_playing(self):
-        
+
         try:
             return pygame.mixer.music.get_busy()
         except:
