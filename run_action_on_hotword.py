@@ -15,6 +15,9 @@ class RunActionOnHotword:
             vision_service = VisionService()
             vision_service.do_vision()
 
-    
+        if ("french" == hotword):
+            print("will update configuration file with French")
+
+
 run_action_on_hotword = RunActionOnHotword()
 run_action_on_hotword.run()

@@ -1,13 +1,13 @@
 import sys
 sys.path.append('./snowboy')
-from rgb_led_service import RGBLedService
-from sonar_service import SonarService
-from local_communication_service import LocalCommunicationService as local_communication_service
-import time
-import threading
-import os
-import snowboydecoder
 
+import snowboydecoder
+import os
+import threading
+import time
+from local_communication_service import LocalCommunicationService as local_communication_service
+from sonar_service import SonarService
+from rgb_led_service import RGBLedService
 
 
 class WaitForTriggerService:
@@ -25,6 +25,12 @@ class WaitForTriggerService:
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "Explore Detected"
         local_communication_service.getInstance().write_hotword("explore")
+        self.terminate_detector()
+
+    def detected_french(self):
+        RGBLedService.getInstance().set_color(1, 0, 0)
+        print "French Detected"
+        local_communication_service.getInstance().write_hotword("french")
         self.terminate_detector()
 
     def terminate_detector(self):
@@ -56,7 +62,6 @@ class WaitForTriggerService:
             if (self.__very_small_distance_sonar_counter > 3):
                 self.detected_teddy()
 
-
     def main(self):
         self.sonar_service = SonarService.getInstance()
 
@@ -64,11 +69,12 @@ class WaitForTriggerService:
         sonar_thread.daemon = True
         sonar_thread.start()
 
-        models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl"]
+        models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl"]
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
 
         callbacks = [self.detected_teddy,
-                     self.detected_explore]
+                     self.detected_explore,
+                     self.detected_french]
 
         self.detector.start(detected_callback=callbacks, interrupt_check=self.interrupt_callback)
 
