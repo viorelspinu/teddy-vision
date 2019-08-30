@@ -112,4 +112,5 @@ class CloudService:
         print(data_translated)
 
         mp3_base64 = self.do_text_to_speech_post(data, tts_language_code, tts_voice_code)
+        
         self.decode_text_to_file_as_base64(mp3_base64, mp3_out_file)
