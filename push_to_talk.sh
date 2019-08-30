@@ -1,4 +1,6 @@
-../conf/restore_sound_volume.sh
+cd conf
+./restore_sound_volume.sh
+cd ..
 python ./record_respearker.py
 ffmpeg -i ./hello.wav -ar 11025 -ac 2 output.wav -y
 aplay ./wav/one_sec.wav
