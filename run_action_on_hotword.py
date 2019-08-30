@@ -6,7 +6,7 @@ from vision_service import VisionService as vision_service
 class RunActionOnHotword:
 
     def run(self):
-        self.hotword = local_communication_service.getInstance().read_hotword()
+        hotword = local_communication_service.getInstance().read_hotword()
         if ("teddy" == hotword):
             os.system("aplay ./wav/yes.wav")
             os.system("./push_to_talk.sh")
