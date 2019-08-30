@@ -44,8 +44,8 @@ class WaitForTriggerService:
             if (self.__small_distance_sonar_counter > 3):
                 self.detected_explore()
             
-            #print (abs(self.__old_distance - distance))
-            print(distance)
+            print (abs(self.__old_distance - distance))
+            #print(distance)
 
             self.__old_distance = distance
 
