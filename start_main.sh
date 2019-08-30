@@ -2,7 +2,7 @@
 cd ./conf
 ./restore_sound_volume.sh
 cd ..
-amixer sset 'PCM' 100%
+amixer sset 'PCM' 85%
 
 #go to https://console.developers.google.com/apis/credentials
 export GOOGLE_API_KEY=__YOUR_GOOGLE_API_KEY___
