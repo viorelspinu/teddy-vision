@@ -34,7 +34,7 @@ class WaitForTriggerService:
         while (not self.__interrupted):
             distance = self.sonar_service.measure()
             print(distance)
-            time.sleep(0.1)
+            time.sleep(0.02)
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
