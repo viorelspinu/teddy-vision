@@ -23,9 +23,6 @@ VISION_URL = "https://vision.googleapis.com/v1/images:annotate?key=" + API_KEY
 TRANSLATE_URL = "https://translation.googleapis.com/language/translate/v2?key=" + API_KEY
 TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1/text:synthesize?key=" + API_KEY
 
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 class CloudService:
 
@@ -113,7 +110,7 @@ class CloudService:
 
         data_translated = self.do_translate_post(data, translate_language_code).decode('utf-8')
         html_parser = HTMLParser()
-        data_translated = html_parser.unescape(unicode(data_translated))
+        data_translated = html_parser.unescape(data_translated)
 
         print(data_translated)
 
