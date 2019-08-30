@@ -6,18 +6,25 @@ interrupted = False
 
 def detected_teddy():
     print "Teddy Detected"
-    detector.terminate()
-    global interrupted
-    interrupted = True
-    print "terminate on teddy"
+    write_hotword("teddy")
+    terminate_detector()
 
 
 def detected_explore():
     print "Explore Detected"
+    write_hotword("explore")
+    terminate_detector()
+
+
+def terminate_detector():
     detector.terminate()
     global interrupted
     interrupted = True
-    print "terminate on explore"
+
+def write_hotword(hotword):
+    f = open("hotword.txt", "w")
+    f.write(hotword)
+    f.close()
 
 
 def interrupt_callback():
