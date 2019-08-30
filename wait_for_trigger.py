@@ -1,14 +1,12 @@
+import snowboydecoder
+import os
+import threading
+import time
+from local_communication_service import LocalCommunicationService as local_communication_service
+from sonar_service import SonarService
+from rgb_led_service import RGBLedService
 import sys
 sys.path.append('./snowboy')
-
-from rgb_led_service import RGBLedService
-from sonar_service import SonarService
-from local_communication_service import LocalCommunicationService as local_communication_service
-import time
-import threading
-import os
-import snowboydecoder
-
 
 
 class WaitForTriggerService:
@@ -17,28 +15,28 @@ class WaitForTriggerService:
     __very_small_distance_sonar_counter = 0
 
     def detected_teddy(self):
+        self.terminate_detector()
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "Teddy Detected"
         local_communication_service.getInstance().write_hotword("teddy")
-        self.terminate_detector()
 
     def detected_explore(self):
+        self.terminate_detector()
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "Explore Detected"
         local_communication_service.getInstance().write_hotword("explore")
-        self.terminate_detector()
 
     def detected_french(self):
+        self.terminate_detector()
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "French Detected"
         local_communication_service.getInstance().write_hotword("french")
-        self.terminate_detector()
 
     def detected_english(self):
+        self.terminate_detector()
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "English Detected"
         local_communication_service.getInstance().write_hotword("english")
-        self.terminate_detector()
 
     def terminate_detector(self):
         self.__interrupted = True
