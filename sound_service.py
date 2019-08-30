@@ -16,7 +16,6 @@ class SoundService:
             raise Exception("This class is a singleton!")
         else:
             SoundService.__instance = self
-            pygame.mixer.init()
 
     def play(self, file_path):
         os.system("aplay ./" + file_path)
