@@ -10,7 +10,7 @@ export GOOGLE_API_KEY=__YOUR_GOOGLE_API_KEY___
 
 while true
 do
-python ./wait_for_hotword_snowboy.py
+python ./wait_for_trigger.py
 
 python ./run_action_on_hotword.py
 
