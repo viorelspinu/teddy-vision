@@ -1,3 +1,6 @@
+import sys
+sys.path.append('./snowboy')
+
 from rgb_led_service import RGBLedService
 from sonar_service import SonarService
 from local_communication_service import LocalCommunicationService as local_communication_service
@@ -5,8 +8,7 @@ import time
 import threading
 import os
 import snowboydecoder
-import sys
-sys.path.append('./snowboy')
+
 
 
 class WaitForTriggerService:
