@@ -70,7 +70,7 @@ class RecordAudioService:
 
         sum_squares = 0.0
         for sample in shorts:
-            n = sample * SHORT_NORMALIZE
+            n = sample * self.SHORT_NORMALIZE
             sum_squares += n * n
         rms = math.pow(sum_squares / count, 0.5)
 
