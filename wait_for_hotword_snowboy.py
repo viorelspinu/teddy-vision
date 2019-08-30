@@ -1,8 +1,9 @@
+sys.path.append('./snowboy')
 from local_communication_service import LocalCommunicationService as local_communication_service
 import snowboydecoder
 import os
 import sys
-sys.path.append('./snowboy')
+
 
 
 interrupted = False
