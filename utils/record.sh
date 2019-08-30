@@ -1,4 +1,5 @@
-if [ -z "$1" ] then
+if [ -z "$1" ] 
+then
     echo "record.sh _output_file_name_"
     exit 1
 fi
