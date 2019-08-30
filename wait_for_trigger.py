@@ -42,7 +42,7 @@ class WaitForTriggerService:
                 self.__very_small_distance_sonar_counter = self.__very_small_distance_sonar_counter + 1
             else:
                 self.__very_small_distance_sonar_counter = 0
-                if(distance < 50):
+                if(distance < 70):
                     RGBLedService.getInstance().set_color(0, 1, 0)
                     self.__small_distance_sonar_counter = self.__small_distance_sonar_counter + 1
                 else:
@@ -54,7 +54,7 @@ class WaitForTriggerService:
 
             if (self.__very_small_distance_sonar_counter > 3):
                 self.detected_teddy()
-                
+
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
