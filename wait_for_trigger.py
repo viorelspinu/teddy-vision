@@ -46,7 +46,12 @@ class WaitForTriggerService:
 
             if (self.__small_distance_sonar_counter > 3):
                 self.detected_explore()
-            
+
+            distance_diff = abs(distance - self.__old_distance)        
+            print(distance_diff)
+
+
+
     def main(self):
         self.sonar_service = SonarService.getInstance()
 
