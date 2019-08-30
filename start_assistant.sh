@@ -7,7 +7,7 @@ amixer sset 'PCM' 100%
 while true
 do
 cd ./snowboy
-python ./snowboy_sample.py
+python ./wait_for_hotword_snowboy.py
 cd ..
 aplay ./wav/yes_sir.wav
 ./push_to_talk.sh
