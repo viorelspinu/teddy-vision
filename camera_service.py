@@ -3,7 +3,7 @@ from picamera import PiCamera
 
 
 class CameraService:
-     __instance = None
+    __instance = None
 
     @staticmethod
     def getInstance():
@@ -14,11 +14,11 @@ class CameraService:
     def __init__(self):
         self.camera = PiCamera()
         CameraService.__instance = self
-            
+
     def take_photo(self, file_path):
         print("PHOTO START")
         self.camera.resolution = (1024, 768)
         self.camera.start_preview()
         sleep(1)
-        self.camera.capture(file_path) 
+        self.camera.capture(file_path)
         print("PHOTO DONE")
