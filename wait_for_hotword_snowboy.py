@@ -4,19 +4,31 @@ import os
 interrupted = False
 
 
-def detected_callback():
-    print "Hotword Detected"
+def detected_teddy():
+    print "Teddy Detected"
     detector.terminate()
     global interrupted
     interrupted = True
-    print "terminate"
+    print "terminate on teddy"
+
+
+def detected_explore():
+    print "Explore Detected"
+    detector.terminate()
+    global interrupted
+    interrupted = True
+    print "terminate on explore"
 
 
 def interrupt_callback():
     global interrupted
     return interrupted
 
+models = ["./t.model", "./explore.mdl"]
 
-detector = snowboydecoder.HotwordDetector("./t.model", sensitivity=0.5, audio_gain=1)
+detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
 
-detector.start(detected_callback, interrupt_check=interrupt_callback)
+callbacks = [lambda: detected_teddy,
+             lambda: detected_explore]
+
+detector.start(detected_callback=callbacks, interrupt_check=interrupt_callback)
