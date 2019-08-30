@@ -33,15 +33,15 @@ class WaitForTriggerService:
         return self.__interrupted
 
     def watch_sonar():
-        distance = self.sonar_service.measure()
-        print(distance)
+        #distance = self.sonar_service.measure()
+        print("distance")
         time.sleep(0.1)
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
 
         sonar_thread = threading.Thread(target=self.watch_sonar)
-        sonar_thread.setDaemon(True)
+        sonar_thread.daemon = True
         sonar_thread.start()
 
         models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl"]
