@@ -11,6 +11,7 @@ from sonar_service import SonarService
 
 class WaitForTriggerService:
     __interrupted = False
+    __small_distance_sonar_counter = 0
 
     def detected_teddy(self):
         print "Teddy Detected"
@@ -33,6 +34,11 @@ class WaitForTriggerService:
         while (not self.__interrupted):
             distance = self.sonar_service.measure()
             if (distance < 50):
+                self.__small_distance_sonar_counter = __small_distance_sonar_counter  + 1
+            else:
+                self.__small_distance_sonar_counter = 0
+                
+            if (self.__small_distance_sonar_counter > 5):
                 self.detected_explore()
 
             print(distance)
