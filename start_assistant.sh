@@ -2,6 +2,7 @@
 cd ./conf
 ./restore_sound_volume.sh
 cd ..
+amixer sset 'PCM' 100%
 
 while true
 do
