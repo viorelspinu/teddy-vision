@@ -1,4 +1,7 @@
 #!/bin/bash
+
+cd /home/pi/teddy-vision
+
 cd ./conf
 ./restore_sound_volume.sh
 cd ..
