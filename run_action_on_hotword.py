@@ -17,10 +17,14 @@ class RunActionOnHotword:
 
         if ("french" == hotword):
             os.system("aplay ./wav/french.wav")
+            os.system("rm use_english")
+            os.system("touch use_french")
             print("will update configuration file with French")
 
         if ("english" == hotword):
             os.system("aplay ./wav/english.wav")
+            os.system("touch use_english")
+            os.system("rm use_french")
             print("will update configuration file with English")
 
 

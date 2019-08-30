@@ -5,11 +5,15 @@ import os
 import simplejson as json
 import time
 import numpy as np
+import os.path
+
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
-DUTCH_TRANSLATE_LANGUAGE_CODE = 'nl'
+ENGLISH_TRANSLATE_LANGUAGE_CODE = 'en'
+ENGLISH_VOICE_CODE = 'en-US-Wavenet-D'
 FRENCH_TRANSLATE_LANGUAGE_CODE = 'fr'
+FRENCH_VOICE_CODE = 'fr-FR-Standard-D'
 
 VISION_URL = "https://vision.googleapis.com/v1/images:annotate?key=" + API_KEY
 TRANSLATE_URL = "https://translation.googleapis.com/language/translate/v2?key=" + API_KEY
@@ -56,12 +60,12 @@ class CloudService:
         r_text = r_json['data']['translations'][0]['translatedText'].encode('utf-8')
         return r_text
 
-    def do_text_to_speech_post(self, text):
+    def do_text_to_speech_post(self, text, voice_code):
         json_data = {
             "input": {"text": text},
             "voice": {
                 "languageCode": "en-US",
-                "name": "en-US-Wavenet-D",
+                "name": voice_code,
                 "ssmlGender": "MALE"
             },
             "audioConfig": {
@@ -91,8 +95,14 @@ class CloudService:
             data = data + str(item['description']) + ","
         print(data)
 
-        #data_translated = self.do_translate_post(data, DUTCH_LANGUAGE_CODE)
-        # print(data_translated)
+        language_code = ENGLISH_TRANSLATE_LANGUAGE_CODE
+        voice_code = ENGLISH_VOICE_CODE
+        if (os.path.exists("use_french")):
+            language_code = FRENCH_TRANSLATE_LANGUAGE_CODE
+            voice_code = FRENCH_VOICE_CODE
 
-        mp3_base64 = self.do_text_to_speech_post("I have seen:" + data)
+        data_translated = self.do_translate_post("I have seen:" + data, language_code)
+        print(data_translated)
+
+        mp3_base64 = self.do_text_to_speech_post(data, voice_code)
         self.decode_text_to_file_as_base64(mp3_base64, mp3_out_file)
