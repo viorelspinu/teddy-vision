@@ -46,7 +46,7 @@ class RecordAudioService:
             else:
                 silence_count = 0
 
-            if (silence_count > 5):
+            if (silence_count > 10):
                 if (i > 30):
                     break
 
