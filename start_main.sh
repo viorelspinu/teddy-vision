@@ -7,7 +7,10 @@ amixer sset 'PCM' 100%
 while true
 do
 python ./wait_for_hotword_snowboy.py
-aplay ./wav/yes_sir.wav
-./push_to_talk.sh
+
+
+python ./run_action_on_hotword.py
+
 sleep 0.5
+
 done
