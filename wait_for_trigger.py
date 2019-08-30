@@ -1,11 +1,10 @@
 
+from sonar_service import SonarService
+from local_communication_service import LocalCommunicationService as local_communication_service
+import snowboydecoder
+import os
 import sys
 sys.path.append('./snowboy')
-
-import os
-import snowboydecoder
-from local_communication_service import LocalCommunicationService as local_communication_service
-from sonar_service import SonarService
 
 
 class WaitForTriggerService:
@@ -34,8 +33,8 @@ class WaitForTriggerService:
         models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl"]
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
 
-        callbacks = [detected_teddy,
-                     detected_explore]
+        callbacks = [lambda:self.detected_teddy,
+                     lambda:self.detected_explore]
 
         detector.start(detected_callback=callbacks, interrupt_check=self.interrupt_callback)
 
