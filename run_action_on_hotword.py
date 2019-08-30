@@ -1,7 +1,7 @@
 import os
 from local_communication_service import LocalCommunicationService as local_communication_service
 from camera import Camera
-from sound_processor import SoundProcessor
+#from sound_processor import SoundProcessor
 from cloud_processor import CloudProcessor
 from rgb import RGBLed
 from sonar import Sonar
