@@ -17,4 +17,7 @@ class VisionService:
         camera_service.take_photo("photo.jpg")
         led_service.set_color(1, 0, 0)
         SoundService.getInstance().play("./wav/done_have_to_think.wav", True)
-        cloud_processor.process_photo("photo.jpg")
+        cloud_processor.process_photo("photo.jpg", "vision_out.mp3")
+        os.system("ffmpeg -i ./vision_out.mp3 ./vision_out.wav")
+        os.system("aplay ./vision_out.wav")
+
