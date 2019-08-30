@@ -110,7 +110,7 @@ class CloudService:
 
         data_translated = self.do_translate_post("I have seen:" + data, translate_language_code).encode('utf-8')
         html_parser = HTMLParser()
-        data_translated = html_parser.unescape(data_translated)
+        data_translated = html_parser.unescape(unicode(data_translated))
 
         print(data_translated)
 
