@@ -54,6 +54,7 @@ class WaitForTriggerService:
                 self.__distance_variantion = self.__distance_variantion + distance_diff
 
             print(self.__distance_variantion)
+            
 
             self.__old_distance = distance
 
