@@ -39,7 +39,7 @@ class RecordAudioService:
         for i in range(0, int(self.RESPEAKER_RATE / self.CHUNK * self.RECORD_SECONDS)):
             data = self.stream.read(self.CHUNK)
             rms_value = self.rms(data)
-            frames.append(data)
+            self.frames.append(data)
             print(rms_value)
             if (rms_value < 90):
                 silence_count = silence_count + 1
