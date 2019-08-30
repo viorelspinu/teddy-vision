@@ -33,7 +33,7 @@ class WaitForTriggerService:
         while (not self.__interrupted):
             distance = self.sonar_service.measure()
             if (distance < 50):
-                self.detected_explore(self)
+                self.detected_explore()
 
             print(distance)
             # time.sleep(0.02)
