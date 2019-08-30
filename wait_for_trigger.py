@@ -46,21 +46,7 @@ class WaitForTriggerService:
 
             if (self.__small_distance_sonar_counter > 3):
                 self.detected_explore()
-
-            distance_diff = self.__old_distance - distance
-            print(distance_diff)
-            print(self.__distance_variantion)
             
-            if (distance_dff < 5):
-                self.__distance_variantion = 0
-            else:
-                self.__distance_variantion = self.__distance_variantion + distance_diff
-
-            
-
-
-            self.__old_distance = distance
-
     def main(self):
         self.sonar_service = SonarService.getInstance()
 
