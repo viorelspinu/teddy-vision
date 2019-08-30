@@ -10,10 +10,14 @@ import os.path
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
-ENGLISH_TRANSLATE_LANGUAGE_CODE = 'en'
-ENGLISH_VOICE_CODE = 'en-US-Wavenet-D'
-FRENCH_TRANSLATE_LANGUAGE_CODE = 'fr'
-FRENCH_VOICE_CODE = 'fr-FR-Standard-D'
+TRANSLATE_LANGUAGE_CODE_ENGLISH = "en"
+TTS_VOICE_CODE_ENGLISH = "en-US-Wavenet-D"
+TTS_LANGUAGE_CODE_ENGLISH = "en-US"
+
+TRANSLATE_LANGUAGE_CODE_FRENCH = "fr"
+TTS_VOICE_CODE_FRENCH = "fr-FR-Standard-D"
+TTS_LANGUAGE_CODE_FRENCH = "fr-FR"
+
 
 VISION_URL = "https://vision.googleapis.com/v1/images:annotate?key=" + API_KEY
 TRANSLATE_URL = "https://translation.googleapis.com/language/translate/v2?key=" + API_KEY
@@ -60,11 +64,11 @@ class CloudService:
         r_text = r_json['data']['translations'][0]['translatedText'].encode('utf-8')
         return r_text
 
-    def do_text_to_speech_post(self, text, voice_code):
+    def do_text_to_speech_post(self, text, language_code, voice_code):
         json_data = {
             "input": {"text": text.encode('utf-8')},
             "voice": {
-                "languageCode": "en-US",
+                "languageCode": language_code,
                 "name": voice_code,
                 "ssmlGender": "MALE"
             },
@@ -95,14 +99,17 @@ class CloudService:
             data = data + str(item['description']) + ","
         print(data)
 
-        language_code = ENGLISH_TRANSLATE_LANGUAGE_CODE
-        voice_code = ENGLISH_VOICE_CODE
-        if (os.path.exists("use_french")):
-            language_code = FRENCH_TRANSLATE_LANGUAGE_CODE
-            voice_code = FRENCH_VOICE_CODE
+        translate_language_code = TRANSLATE_LANGUAGE_CODE_ENGLISH
+        tts_voice_code = TTS_VOICE_CODE_ENGLISH
+        tts_language_code = TTS_LANGUAGE_CODE_ENGLISH
 
-        data_translated = self.do_translate_post("bonjour", language_code)
+        if (os.path.exists("use_french")):
+            translate_language_code = TRANSLATE_LANGUAGE_CODE_FRENCH
+            tts_voice_code = TTS_VOICE_CODE_FRENCH
+            tts_language_code = TTS_LANGUAGE_CODE_FRENCH
+
+        data_translated = self.do_translate_post("I have seen:" + data, translate_language_code)
         print(data_translated)
 
-        mp3_base64 = self.do_text_to_speech_post(data, voice_code)
+        mp3_base64 = self.do_text_to_speech_post(data, tts_language_code, tts_voice_code)
         self.decode_text_to_file_as_base64(mp3_base64, mp3_out_file)
