@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd /home/pi/teddy-vision
+export PATH=$PATH:/home/pi/.local/bin 
 
 cd ./conf
 ./restore_sound_volume.sh
