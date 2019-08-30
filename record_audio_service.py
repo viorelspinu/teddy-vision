@@ -60,7 +60,7 @@ class RecordAudioService:
         wf.setnchannels(self.RESPEAKER_CHANNELS)
         wf.setsampwidth(self.p.get_sample_size(self.p.get_format_from_width(self.RESPEAKER_WIDTH)))
         wf.setframerate(self.RESPEAKER_RATE)
-        wf.writeframes(b''.join(frames))
+        wf.writeframes(b''.join(self.frames))
         wf.close()
 
     def rms(self, frame):
