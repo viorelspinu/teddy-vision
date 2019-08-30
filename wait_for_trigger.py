@@ -1,13 +1,11 @@
+import snowboydecoder
+import os
+import threading
+import time
+from local_communication_service import LocalCommunicationService as local_communication_service
+from sonar_service import SonarService
 import sys
 sys.path.append('./snowboy')
-
-from sonar_service import SonarService
-from local_communication_service import LocalCommunicationService as local_communication_service
-import time
-import threading
-import os
-import snowboydecoder
-
 
 
 class WaitForTriggerService:
@@ -33,8 +31,11 @@ class WaitForTriggerService:
     def watch_sonar(self):
         while (not self.__interrupted):
             distance = self.sonar_service.measure()
+            if (distance < 50):
+                self.detected_explore(self)
+
             print(distance)
-            time.sleep(0.02)
+            # time.sleep(0.02)
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
