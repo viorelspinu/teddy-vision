@@ -3,7 +3,7 @@ from local_communication_service import LocalCommunicationService as local_commu
 from camera_service import CameraService
 from sound_service import SoundService
 from cloud_service import CloudService
-from rgb_led_service import RGBLedService()
+from rgb_led_service import RGBLedService
 
 
 class VisionService:

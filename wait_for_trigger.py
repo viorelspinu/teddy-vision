@@ -4,6 +4,7 @@ import time
 import threading
 import os
 import snowboydecoder
+from rgb_led_service import RGBLedService
 import sys
 sys.path.append('./snowboy')
 
@@ -33,8 +34,10 @@ class WaitForTriggerService:
         while (not self.__interrupted):
             distance = self.sonar_service.measure()
             if (distance < 50):
+                RGBLedService.getInstance().set_color(0, 1, 0)
                 self.__small_distance_sonar_counter = self.__small_distance_sonar_counter + 1
             else:
+                RGBLedService.getInstance().set_color(0, 0, 1)
                 self.__small_distance_sonar_counter = 0
 
             if (self.__small_distance_sonar_counter > 3):
