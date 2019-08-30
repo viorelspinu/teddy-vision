@@ -15,6 +15,7 @@ class RGBLedService:
         return RGBLedService.__instance
 
     def __init__(self):
+        print("__init__(self):")
         GPIO.setmode(GPIO.BCM)
         self.GPIO_TRIGECHO = 15
         RGBLedService.__instance = self
