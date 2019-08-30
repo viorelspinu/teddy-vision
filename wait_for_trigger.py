@@ -1,13 +1,13 @@
 import sys
 sys.path.append('./snowboy')
-
-from rgb_led_service import RGBLedService
-from sonar_service import SonarService
-from local_communication_service import LocalCommunicationService as local_communication_service
-import time
-import threading
-import os
 import snowboydecoder
+
+import os
+import threading
+import time
+from local_communication_service import LocalCommunicationService as local_communication_service
+from sonar_service import SonarService
+from rgb_led_service import RGBLedService
 
 
 
@@ -47,10 +47,13 @@ class WaitForTriggerService:
             if (self.__small_distance_sonar_counter > 3):
                 self.detected_explore()
 
-            distance_diff = abs(distance - self.__old_distance)        
+            distance_diff = abs(distance - self.__old_distance)
             print(distance_diff)
-
-
+            if (distance_diff < 5):
+                self.__distance_variantion = 0
+            else:
+                self.__distance_variantion = self.__distance_variantion + distance_diff
+            self.__old_distance = distance
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
