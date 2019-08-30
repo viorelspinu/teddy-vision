@@ -32,9 +32,9 @@ class WaitForTriggerService:
     def interrupt_callback(self):
         return self.__interrupted
 
-    def watch_sonar():
-        #distance = self.sonar_service.measure()
-        print("distance")
+    def watch_sonar(self):
+        distance = self.sonar_service.measure()
+        print(distance)
         time.sleep(0.1)
 
     def main(self):
@@ -43,8 +43,6 @@ class WaitForTriggerService:
         sonar_thread = threading.Thread(target=self.watch_sonar)
         sonar_thread.daemon = True
         sonar_thread.start()
-        print("sonar_thread")
-        print(sonar_thread)
 
         models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl"]
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
