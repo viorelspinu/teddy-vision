@@ -42,6 +42,7 @@ class WaitForTriggerService:
 
         sonar_thread = threading.Thread(target=self.watch_sonar)
         sonar_thread.setDaemon(True)
+        sonar_thread.start()
 
         models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl"]
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
