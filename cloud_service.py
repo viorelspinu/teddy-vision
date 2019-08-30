@@ -109,8 +109,8 @@ class CloudService:
             tts_language_code = TTS_LANGUAGE_CODE_FRENCH
 
         data_translated = self.do_translate_post(data, translate_language_code).decode('utf-8')
-        #html_parser = HTMLParser()
-        #data_translated = html_parser.unescape(data_translated)
+        html_parser = HTMLParser()
+        data_translated = html_parser.unescape(data_translated)
 
         #print(data_translated)
 
