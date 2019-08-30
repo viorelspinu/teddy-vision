@@ -38,7 +38,7 @@ class WaitForTriggerService:
         callbacks = [lambda:self.detected_teddy,
                      lambda:self.detected_explore]
 
-        detector.start(detected_callback=callbacks, interrupt_check=self.interrupt_callback)
+        self.detector.start(detected_callback=callbacks, interrupt_check=self.interrupt_callback)
 
 
 wait_for_trigger_service = WaitForTriggerService()
