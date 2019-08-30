@@ -24,6 +24,7 @@ def interrupt_callback():
     global interrupted
     return interrupted
 
+
 models = ["./t.model", "./explore.mdl"]
 
 detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
