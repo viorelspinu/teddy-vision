@@ -64,7 +64,7 @@ class RecordAudioService:
         wf.close()
 
     def rms(self, frame):
-        count = len(frame) / swidth
+        count = len(frame) / self.swidth
         format = "%dh" % (count)
         shorts = struct.unpack(format, frame)
 
