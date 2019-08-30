@@ -1,8 +1,8 @@
-from local_communication_service import LocalCommunicationService as local_communication_service
 import snowboydecoder
 import os
 import sys
 sys.path.append('../')
+from local_communication_service import LocalCommunicationService as local_communication_service
 
 interrupted = False
 
