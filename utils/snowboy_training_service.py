@@ -1,6 +1,7 @@
 import sys
 import base64
 import requests
+import os
 
 def get_wave(fname):
     with open(fname) as infile:
