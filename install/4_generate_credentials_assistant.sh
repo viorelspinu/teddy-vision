@@ -14,3 +14,5 @@ google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-proto
       --scope https://www.googleapis.com/auth/gcm \
       --save --headless --client-secrets $FILE_SECRETS_PATH
 
+sudo mkdir /root/.config/google-oauthlib-tool/
+sudo cp  /home/pi/.config/google-oauthlib-tool/credentials.json  /root/.config/google-oauthlib-tool/credentials.json
