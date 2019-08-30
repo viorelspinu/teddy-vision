@@ -6,7 +6,7 @@ import simplejson as json
 import time
 import numpy as np
 import os.path
-
+from HTMLParser import HTMLParser
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
@@ -108,7 +108,10 @@ class CloudService:
             tts_voice_code = TTS_VOICE_CODE_FRENCH
             tts_language_code = TTS_LANGUAGE_CODE_FRENCH
 
-        data_translated = self.do_translate_post("I have seen:" + data, translate_language_code)
+        data_translated = self.do_translate_post("I have seen:" + data, translate_language_code).encode('utf-8')
+        html_parser = HTMLParser()
+        data_translated = html_parser.unescape(data_translated)
+
         print(data_translated)
 
         mp3_base64 = self.do_text_to_speech_post(data_translated, tts_language_code, tts_voice_code)
