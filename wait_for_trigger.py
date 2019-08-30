@@ -1,18 +1,21 @@
 import sys
 sys.path.append('./snowboy')
 
-import snowboydecoder
-import os
-import threading
-import time
-from local_communication_service import LocalCommunicationService as local_communication_service
-from sonar_service import SonarService
 from rgb_led_service import RGBLedService
+from sonar_service import SonarService
+from local_communication_service import LocalCommunicationService as local_communication_service
+import time
+import threading
+import os
+import snowboydecoder
+
+
 
 class WaitForTriggerService:
     __interrupted = False
     __small_distance_sonar_counter = 0
     __old_distance = 0
+    __distance_variantion = 0
 
     def detected_teddy(self):
         print "Teddy Detected"
@@ -43,9 +46,14 @@ class WaitForTriggerService:
 
             if (self.__small_distance_sonar_counter > 3):
                 self.detected_explore()
-            
-            print (abs(self.__old_distance - distance))
-            #print(distance)
+
+            distance_diff = self.__old_distance - distance
+            if (distance_dff < 5):
+                self.__distance_variantion = 0
+            else:
+                self.__distance_variantion = self.__distance_variantion + distance_diff
+
+            print(self.__distance_variantion)
 
             self.__old_distance = distance
 
