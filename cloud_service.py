@@ -23,6 +23,9 @@ VISION_URL = "https://vision.googleapis.com/v1/images:annotate?key=" + API_KEY
 TRANSLATE_URL = "https://translation.googleapis.com/language/translate/v2?key=" + API_KEY
 TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1/text:synthesize?key=" + API_KEY
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 class CloudService:
 
