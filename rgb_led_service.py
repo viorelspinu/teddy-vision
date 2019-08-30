@@ -9,19 +9,12 @@ class RGBLedService:
     @staticmethod
     def getInstance():
         if (RGBLedService.__instance == None):
-            print("init")
             RGBLedService()
-        print("RGBLedService.__instance")
-        print(RGBLedService.__instance)
         return RGBLedService.__instance
 
     def __init__(self):
-        RGBLedService.__instance = self
-        print("__init__(self):")
-        GPIO.setmode(GPIO.BCM)
+        RGBLedService.__instance = self        
         self.GPIO_TRIGECHO = 15
-
-    def __init__(self):
         GPIO.setmode(GPIO.BCM)
         GPIO.setwarnings(False)
         GPIO.setup(25, GPIO.OUT)
