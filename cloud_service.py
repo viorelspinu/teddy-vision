@@ -57,6 +57,7 @@ class CloudService:
         }
         r = requests.post(TRANSLATE_URL, data=json.dumps(json_data))
         r_json = r.json()
+        print(r_json)
         r_text = r_json['data']['translations'][0]['translatedText'].encode('utf-8')
         return r_text
 
