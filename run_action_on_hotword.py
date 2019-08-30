@@ -14,5 +14,6 @@ class RunActionOnHotword:
         if ("explore" == hotword):
             vision_service.getInstance().do_vision()
 
-    if __name__ == '__main__':
-        run()
+    
+run_action_on_hotword = RunActionOnHotword()
+run_action_on_hotword.run()
