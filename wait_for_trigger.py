@@ -1,21 +1,18 @@
+from rgb_led_service import RGBLedService
+from sonar_service import SonarService
+from local_communication_service import LocalCommunicationService as local_communication_service
+import time
+import threading
+import os
+import snowboydecoder
 import sys
 sys.path.append('./snowboy')
-import snowboydecoder
-
-import os
-import threading
-import time
-from local_communication_service import LocalCommunicationService as local_communication_service
-from sonar_service import SonarService
-from rgb_led_service import RGBLedService
-
 
 
 class WaitForTriggerService:
     __interrupted = False
     __small_distance_sonar_counter = 0
-    __old_distance = 0
-    __distance_variantion = 0
+    __very_small_distance_sonar_counter = 0
 
     def detected_teddy(self):
         RGBLedService.getInstance().set_color(1, 0, 0)
@@ -41,29 +38,23 @@ class WaitForTriggerService:
             distance = self.sonar_service.measure()
 
             if (distance < 15):
-                self.detected_teddy()
-
-            if (distance < 50):
-                RGBLedService.getInstance().set_color(0, 1, 0)
-                self.__small_distance_sonar_counter = self.__small_distance_sonar_counter + 1
+                RGBLedService.getInstance().set_color(1, 1, 1)
+                self.__very_small_distance_sonar_counter = self.__very_small_distance_sonar_counter + 1
             else:
-                RGBLedService.getInstance().set_color(0, 0, 1)
-                self.__small_distance_sonar_counter = 0
+                self.__very_small_distance_sonar_counter = 0
+                if(distance < 50):
+                    RGBLedService.getInstance().set_color(0, 1, 0)
+                    self.__small_distance_sonar_counter = self.__small_distance_sonar_counter + 1
+                else:
+                    RGBLedService.getInstance().set_color(0, 0, 1)
+                    self.__small_distance_sonar_counter = 0
 
             if (self.__small_distance_sonar_counter > 3):
                 self.detected_explore()
 
-            distance_diff = abs(distance - self.__old_distance)
-            if (distance_diff < 60):
-                self.__distance_variantion = self.__distance_variantion - 10
-                if (self.__distance_variantion < 0):
-                    self.__distance_variantion = 0
-            else:
-                self.__distance_variantion = self.__distance_variantion + 90
-            self.__old_distance = distance
-
-            if (self.__distance_variantion > 300):
+            if (self.__very_small_distance_sonar_counter > 3):
                 self.detected_teddy()
+                
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
