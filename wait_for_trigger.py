@@ -10,7 +10,7 @@ from sonar_service import SonarService
 
 
 class WaitForTriggerService:
-    self.interrupted = False
+    __interrupted = False
 
     def detected_teddy(self):
         print "Teddy Detected"
@@ -23,11 +23,11 @@ class WaitForTriggerService:
         self.terminate_detector()
 
     def terminate_detector(self):
-        self.interrupted = True
+        self.__interrupted = True
         self.detector.terminate()
 
     def interrupt_callback(self):
-        return self.interrupted
+        return self.__interrupted
 
     def main(self):
         sonar_service = SonarService.getInstance()
