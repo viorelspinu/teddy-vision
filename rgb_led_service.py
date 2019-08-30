@@ -3,23 +3,23 @@ import time
 import random
 
 
-class RGBLedService: 
+class RGBLedService:
     __instance = None
 
     @staticmethod
     def getInstance():
         if (RGBLedService.__instance == None):
-            print("init")    
+            print("init")
             RGBLedService()
         print("RGBLedService.__instance")
         print(RGBLedService.__instance)
         return RGBLedService.__instance
 
     def __init__(self):
+        RGBLedService.__instance = self
         print("__init__(self):")
         GPIO.setmode(GPIO.BCM)
         self.GPIO_TRIGECHO = 15
-        RGBLedService.__instance = self
 
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
