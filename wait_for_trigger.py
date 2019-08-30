@@ -18,11 +18,13 @@ class WaitForTriggerService:
     __distance_variantion = 0
 
     def detected_teddy(self):
+        RGBLedService.getInstance().set_color(1, 0, 0)
         print "Teddy Detected"
         local_communication_service.getInstance().write_hotword("teddy")
         self.terminate_detector()
 
     def detected_explore(self):
+        RGBLedService.getInstance().set_color(1, 0, 0)
         print "Explore Detected"
         local_communication_service.getInstance().write_hotword("explore")
         self.terminate_detector()
@@ -37,7 +39,9 @@ class WaitForTriggerService:
     def watch_sonar(self):
         while (not self.__interrupted):
             distance = self.sonar_service.measure()
-            print(distance)
+
+            if (distance < 15):
+                self.detected_teddy()
 
             if (distance < 50):
                 RGBLedService.getInstance().set_color(0, 1, 0)
@@ -58,7 +62,7 @@ class WaitForTriggerService:
                 self.__distance_variantion = self.__distance_variantion + 90
             self.__old_distance = distance
 
-            if (self.__distance_variantion > 200):
+            if (self.__distance_variantion > 300):
                 self.detected_teddy()
 
     def main(self):
