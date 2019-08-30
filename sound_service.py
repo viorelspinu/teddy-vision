@@ -18,17 +18,6 @@ class SoundService:
             SoundService.__instance = self
             pygame.mixer.init()
 
-    def play(self, mp3_file_path, blocking=True):
-        print("playing")
-        pygame.mixer.music.load(mp3_file_path)
-        pygame.mixer.music.play()
-        if (blocking):
-            while pygame.mixer.music.get_busy() == True:
-                time.sleep(0.1)
-        print("done playing")
-
-    def done_playing(self):
-        try:
-            return pygame.mixer.music.get_busy()
-        except:
-            return True
+    def play(self, file_path):
+        os.system("aplay ./" + file_path)
+        
