@@ -1,11 +1,10 @@
 import os
 from local_communication_service import LocalCommunicationService as local_communication_service
-from camera import Camera
+#from camera import Camera
 #from sound_processor import SoundProcessor
-from cloud_processor import CloudProcessor
-from rgb import RGBLed
-from sonar import Sonar
-import time
+#from cloud_processor import CloudProcessor
+f#rom rgb import RGBLed
+
 
 hotword = local_communication_service.getInstance().read_hotword()
 
