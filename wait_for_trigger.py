@@ -48,7 +48,6 @@ class WaitForTriggerService:
                 self.detected_explore()
 
             distance_diff = abs(distance - self.__old_distance)
-            print(distance)
             if (distance_diff < 60):
                 self.__distance_variantion = self.__distance_variantion - 10
                 if (self.__distance_variantion < 0):
@@ -57,6 +56,8 @@ class WaitForTriggerService:
                 self.__distance_variantion = self.__distance_variantion + 90
             self.__old_distance = distance
             print(self.__distance_variantion)
+            if (self.__distance_variantion > 500):
+                self.detected_teddy()
 
     def main(self):
         self.sonar_service = SonarService.getInstance()
