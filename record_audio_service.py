@@ -26,7 +26,7 @@ class RecordAudioService:
         self.p = pyaudio.PyAudio()
 
     def record(self):
-        self.stream = p.open(
+        self.stream = self.p.open(
             rate=self.RESPEAKER_RATE,
             format=self.p.get_format_from_width(RESPEAKER_WIDTH),
             channels=self.RESPEAKER_CHANNELS,
@@ -58,7 +58,7 @@ class RecordAudioService:
 
         wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
         wf.setnchannels(RESPEAKER_CHANNELS)
-        wf.setsampwidth(p.get_sample_size(p.get_format_from_width(RESPEAKER_WIDTH)))
+        wf.setsampwidth(self.p.get_sample_size(self.p.get_format_from_width(RESPEAKER_WIDTH)))
         wf.setframerate(RESPEAKER_RATE)
         wf.writeframes(b''.join(frames))
         wf.close()
