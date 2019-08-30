@@ -7,6 +7,6 @@ aplay ./wav/one_sec.wav
 export PROJECT_ID=teddy-assistant
 export DEVICE_ID=teddy-assistant-teddy-o07wiz
 googlesamples-assistant-pushtotalk --project-id $PROJECT_ID --device-model-id $DEVICE_ID --input-audio-file ./output.wav --output-audio-file ./assistant_response.wav
-ffmpeg -i assistant_response.wav -filter:a "volume=7dB" assistant_response_loud.wav
+ffmpeg -i assistant_response.wav -filter:a "volume=7dB" assistant_response_loud.wav -y
 aplay ./assistant_response_loud.wav
 sleep 0.1

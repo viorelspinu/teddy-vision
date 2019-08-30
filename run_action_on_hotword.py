@@ -9,7 +9,7 @@ class RunActionOnHotword:
         hotword = local_communication_service.getInstance().read_hotword()
         if ("teddy" == hotword):
             os.system("aplay ./wav/yes.wav")
-            os.system("./push_to_talk.sh")
+            os.system("./run_assistant_instance.sh")
 
         if ("explore" == hotword):
             vision_service = VisionService()
