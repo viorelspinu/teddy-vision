@@ -7,6 +7,7 @@ import time
 import numpy as np
 import os.path
 from HTMLParser import HTMLParser
+from configuration_service import ConfigurationService
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
@@ -26,6 +27,8 @@ class CloudService:
     TTS_VOICE_CODE_FRENCH = "fr-FR-Standard-D"
     TTS_LANGUAGE_CODE_FRENCH = "fr-FR"
 
+    def __init__(self):
+        self.configuration_service = ConfigurationService()
 
     def encode_file_as_base64(self, image_path):
         with open(image_path, "rb") as image_file:
@@ -104,7 +107,7 @@ class CloudService:
         tts_voice_code = TTS_VOICE_CODE_ENGLISH
         tts_language_code = TTS_LANGUAGE_CODE_ENGLISH
 
-        if (os.path.exists("use_french")):
+        if ("fr" == self.configuration_service.read_configuration().language):
             translate_language_code = TRANSLATE_LANGUAGE_CODE_FRENCH
             tts_voice_code = TTS_VOICE_CODE_FRENCH
             tts_language_code = TTS_LANGUAGE_CODE_FRENCH
@@ -113,7 +116,7 @@ class CloudService:
         html_parser = HTMLParser()
         data_translated = html_parser.unescape(data_translated)
 
-        #print(data_translated)
+        # print(data_translated)
 
         mp3_base64 = self.do_text_to_speech_post(data_translated, tts_language_code, tts_voice_code)
 

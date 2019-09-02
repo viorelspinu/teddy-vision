@@ -28,7 +28,7 @@ class ConfigurationService:
         try:
             read_configuration()
         except:
-            data = {"language": "english"}
+            data = {"language": "en"}
             self.write_configuration(data)
 
 
