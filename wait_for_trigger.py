@@ -59,6 +59,7 @@ class WaitForTriggerService:
         return self.__interrupted
 
     def watch_sonar(self):
+        print (self.__will_stop)
         while (not self.__interrupted and not self.__will_stop):
             distance = self.sonar_service.measure()
             #print(distance)
