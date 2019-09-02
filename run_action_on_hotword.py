@@ -20,6 +20,8 @@ class RunActionOnHotword:
         if ("explore" == hotword):
             vision_service = VisionService()
             vision_service.do_vision()
+            
+            os.system("cp --backup ./vision_out.wav ./audio-logs/")
 
         if ("french" == hotword):
             configuration_data = self.configuration_service.read_configuration()

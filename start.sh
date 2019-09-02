@@ -21,6 +21,7 @@ python ./wait_for_trigger.py
 
 python ./run_action_on_hotword.py
 
+
 sleep 0.5
 
 done

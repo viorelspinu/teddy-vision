@@ -10,3 +10,6 @@ googlesamples-assistant-pushtotalk --project-id $PROJECT_ID --device-model-id $D
 ffmpeg -i assistant_response.wav -filter:a "volume=7dB" assistant_response_loud.wav -y > /dev/null 2>&1 < /dev/null
 aplay ./assistant_response_loud.wav
 sleep 0.1
+
+
+cp --backup ./assistant_response_loud.wav ./audio-logs/
