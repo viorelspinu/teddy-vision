@@ -21,7 +21,7 @@ class ConfigurationService:
     def read_configuration(self):
         ret = None
         with open(self.__CONFIGURATION_FILE, "r") as f:
-            ret = json.load(json_data_file)
+            ret = json.load(f)
         return ret
 
     def validate(self):
