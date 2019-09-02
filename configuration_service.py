@@ -15,7 +15,7 @@ class ConfigurationService:
         ConfigurationService.__instance = self
 
     def write_configuration(self, data):
-        with open(self.__hotword_file, "w") as f:
+        with open(self.__CONFIGURATION_FILE, "w") as f:
             json.dump(data, f)
 
     def read_configuration(self):
