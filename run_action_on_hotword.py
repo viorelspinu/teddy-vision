@@ -30,7 +30,8 @@ class RunActionOnHotword:
         if ("shutdown" == hotword):
             os.system("aplay ./wav/shutdown_response.wav")
             print("shutdown now")
-
+            os.system("sudo shutdown -h now")
+            
 
 run_action_on_hotword = RunActionOnHotword()
 run_action_on_hotword.run()
