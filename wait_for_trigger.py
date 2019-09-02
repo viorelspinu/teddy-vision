@@ -69,6 +69,7 @@ class WaitForTriggerService:
                     self.__small_distance_sonar_counter = 0
 
             if (self.__small_distance_sonar_counter > 3):
+                print ("self.__small_distance_sonar_counter > 3")
                 self.detected_explore()
 
             if (self.__very_small_distance_sonar_counter > 3):
