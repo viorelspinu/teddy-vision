@@ -1,7 +1,8 @@
-from cloud_service import CloudService
 import sys
 import os
 sys.path.append('./..')
+
+from cloud_service import CloudService
 
 
 cloud_service = CloudService()
