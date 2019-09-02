@@ -24,9 +24,13 @@ class ConfigurationService:
             ret = json.load(json_data_file)
         return ret
 
-    def create_default(self):
+    def validate(self):
         try:
             read_configuration()
         except:
             data = {"language": "english"}
             self.write_configuration(data)
+
+
+configuration_service = ConfigurationService()
+configuration_service.validate()
