@@ -2,7 +2,7 @@ import simplejson as json
 
 
 class ConfigurationService:
-    __CONFIGURATION_FILE = "/home/pi/teddy-vision/configuration.json"
+    __CONFIGURATION_FILE = "./configuration.json"
     __instance = None
 
     @staticmethod
