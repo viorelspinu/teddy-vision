@@ -14,7 +14,7 @@ class RunActionOnHotword:
         hotword = local_communication_service.getInstance().read_hotword()
         RGBLedService.getInstance().set_color(1, 0, 0)
         if ("teddy" == hotword):
-            os.system("aplay ./wav/yes.wav")
+            os.system("aplay ./wav/yes_sir.wav")
             os.system("./run_assistant_instance.sh")
 
         if ("explore" == hotword):
