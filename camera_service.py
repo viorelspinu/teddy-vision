@@ -17,7 +17,7 @@ class CameraService:
         # Wait for the automatic gain control to settle
         sleep(2)
         # Now fix the values
-        self.camera.shutter_speed = camera.exposure_speed
+        self.camera.shutter_speed = self.camera.exposure_speed
         self.camera.exposure_mode = 'off'
         g = self.camera.awb_gains
         self.camera.awb_mode = 'off'
