@@ -12,34 +12,40 @@ import snowboydecoder
 
 class WaitForTriggerService:
     __interrupted = False
+    __will_stop = False
     __small_distance_sonar_counter = 0
-    __very_small_distance_sonar_counter = 0
+    __very_small_distance_sonar_counter = 0    
 
     def detected_teddy(self):
+        self.__will_stop = True
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "Teddy Detected"
         local_communication_service.getInstance().write_hotword("teddy")
         self.terminate_detector()
 
     def detected_explore(self):
+        self.__will_stop = True
         print "Explore Detected"
         RGBLedService.getInstance().set_color(1, 0, 0)
         local_communication_service.getInstance().write_hotword("explore")
         self.terminate_detector()
 
-    def detected_french(self):        
+    def detected_french(self):  
+        self.__will_stop = True      
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "French Detected"
         local_communication_service.getInstance().write_hotword("french")
         self.terminate_detector()
 
     def detected_english(self):
+        self.__will_stop = True
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "English Detected"
         local_communication_service.getInstance().write_hotword("english")
         self.terminate_detector()
 
-    def detected_shutdown(self):        
+    def detected_shutdown(self):   
+        #self.__will_stop = True     
         #RGBLedService.getInstance().set_color(1, 0, 0)
         print "Shutdown Detected"
         #local_communication_service.getInstance().write_hotword("shutdown")
@@ -53,7 +59,7 @@ class WaitForTriggerService:
         return self.__interrupted
 
     def watch_sonar(self):
-        while (not self.__interrupted):
+        while (not self.__interrupted and not self.__will_stop):
             distance = self.sonar_service.measure()
             #print(distance)
             if (distance < 15):
