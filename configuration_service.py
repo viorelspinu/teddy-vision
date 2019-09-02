@@ -26,7 +26,8 @@ class ConfigurationService:
 
     def validate(self):
         try:
-            read_configuration()
+            data = read_configuration()
+            print(data)
         except:
             data = {"language": "en"}
             self.write_configuration(data)
