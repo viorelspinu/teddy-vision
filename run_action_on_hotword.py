@@ -21,14 +21,14 @@ class RunActionOnHotword:
 
         if ("french" == hotword):
             configuration_data = self.configuration_service.read_configuration()
-            configuration_data.language = "fr"
+            configuration_data['language'] = "fr"
             self.configuration_service.write_configuration(configuration_data)
             os.system("aplay ./wav/french.wav")
             print("will use french")
 
         if ("english" == hotword):
             configuration_data = self.configuration_service.read_configuration()
-            configuration_data.language = "en"
+            configuration_data['language'] = "en"
             self.configuration_service.write_configuration(configuration_data)
             os.system("aplay ./wav/english.wav")
             print("will use english")
