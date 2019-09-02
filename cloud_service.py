@@ -103,14 +103,14 @@ class CloudService:
             data = data + str(item['description']) + ","
         print(data)
 
-        translate_language_code = TRANSLATE_LANGUAGE_CODE_ENGLISH
-        tts_voice_code = TTS_VOICE_CODE_ENGLISH
-        tts_language_code = TTS_LANGUAGE_CODE_ENGLISH
+        translate_language_code = self.TRANSLATE_LANGUAGE_CODE_ENGLISH
+        tts_voice_code = self.TTS_VOICE_CODE_ENGLISH
+        tts_language_code = self.TTS_LANGUAGE_CODE_ENGLISH
 
         if ("fr" == self.configuration_service.read_configuration().language):
-            translate_language_code = TRANSLATE_LANGUAGE_CODE_FRENCH
-            tts_voice_code = TTS_VOICE_CODE_FRENCH
-            tts_language_code = TTS_LANGUAGE_CODE_FRENCH
+            translate_language_code = self.TRANSLATE_LANGUAGE_CODE_FRENCH
+            tts_voice_code = self.TTS_VOICE_CODE_FRENCH
+            tts_language_code = self.TTS_LANGUAGE_CODE_FRENCH
 
         data_translated = self.do_translate_post(data, translate_language_code).decode('utf-8')
         html_parser = HTMLParser()
