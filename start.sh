@@ -12,6 +12,8 @@ cd ..
 #go to https://console.developers.google.com/apis/credentials
 export GOOGLE_API_KEY=__YOUR_GOOGLE_API_KEY___
 
+python ./configuration_service.py
+
 
 while true
 do

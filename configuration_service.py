@@ -29,6 +29,7 @@ class ConfigurationService:
             data = read_configuration()
             print(data)
         except:
+            print("configuration file not there, creating.")
             data = {"language": "en"}
             self.write_configuration(data)
 
