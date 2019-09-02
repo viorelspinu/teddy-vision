@@ -26,7 +26,7 @@ class ConfigurationService:
 
     def validate(self):
         try:
-            data = read_configuration()
+            data = self.read_configuration()
             print(data)
         except Exception as e:
             print(e)
