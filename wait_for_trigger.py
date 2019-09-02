@@ -18,30 +18,30 @@ class WaitForTriggerService:
 
     def detected_teddy(self):
         self.__will_stop = True
-        RGBLedService.getInstance().set_color(1, 0, 0)
         print "Teddy Detected"
         local_communication_service.getInstance().write_hotword("teddy")
+        RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
     def detected_explore(self):
-        self.__will_stop = True
-        RGBLedService.getInstance().set_color(1, 0, 0)
+        self.__will_stop = True        
         print "Explore Detected"
         local_communication_service.getInstance().write_hotword("explore")
+        RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
     def detected_french(self):  
-        self.__will_stop = True      
-        RGBLedService.getInstance().set_color(1, 0, 0)
+        self.__will_stop = True              
         print "French Detected"
         local_communication_service.getInstance().write_hotword("french")
+        RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
     def detected_english(self):
-        self.__will_stop = True
-        RGBLedService.getInstance().set_color(1, 0, 0)
+        self.__will_stop = True        
         print "English Detected"
         local_communication_service.getInstance().write_hotword("english")
+        RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
     def detected_shutdown(self):   
@@ -59,8 +59,7 @@ class WaitForTriggerService:
         return self.__interrupted
 
     def watch_sonar(self):
-        print (self.__will_stop)
-        while (not self.__interrupted and not self.__will_stop):
+        while (not self.__interrupted and not self.__will_stop):            
             distance = self.sonar_service.measure()
             #print(distance)
             if (distance < 15):
@@ -72,7 +71,7 @@ class WaitForTriggerService:
                     RGBLedService.getInstance().set_color(0, 1, 0)
                     self.__small_distance_sonar_counter = self.__small_distance_sonar_counter + 1
                 else:
-                    #RGBLedService.getInstance().set_color(0, 0, 1)
+                    RGBLedService.getInstance().set_color(0, 0, 1)
                     self.__small_distance_sonar_counter = 0
 
             if (self.__small_distance_sonar_counter > 3):
