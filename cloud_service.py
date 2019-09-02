@@ -102,10 +102,10 @@ class CloudService:
         except:
             print(json_vision_response)
             return
-        data = ""
+        data = "I have seen "
         for item in rows:
             data = data + str(item['description']) + ","
-        print(data)
+        
 
         translate_language_code = self.TRANSLATE_LANGUAGE_CODE_ENGLISH
         tts_voice_code = self.TTS_VOICE_CODE_ENGLISH
