@@ -16,34 +16,34 @@ class WaitForTriggerService:
     __very_small_distance_sonar_counter = 0
 
     def detected_teddy(self):
-        self.terminate_detector()
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "Teddy Detected"
         local_communication_service.getInstance().write_hotword("teddy")
+        self.terminate_detector()
 
     def detected_explore(self):
         print "Explore Detected"
-        self.terminate_detector()
         RGBLedService.getInstance().set_color(1, 0, 0)
         local_communication_service.getInstance().write_hotword("explore")
-
-    def detected_french(self):
         self.terminate_detector()
+
+    def detected_french(self):        
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "French Detected"
         local_communication_service.getInstance().write_hotword("french")
+        self.terminate_detector()
 
     def detected_english(self):
-        self.terminate_detector()
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "English Detected"
         local_communication_service.getInstance().write_hotword("english")
-
-    def detected_shutdown(self):
         self.terminate_detector()
+
+    def detected_shutdown(self):        
         RGBLedService.getInstance().set_color(1, 0, 0)
         print "Shutdown Detected"
         local_communication_service.getInstance().write_hotword("shutdown")
+        self.terminate_detector()
 
     def terminate_detector(self):
         self.__interrupted = True
