@@ -97,7 +97,7 @@ class WaitForTriggerService:
         sonar_thread.start()
 
         models = ["./snowboy_models/listen.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl", "./snowboy_models/english.mdl", "./snowboy_models/shutdown.mdl", "./snowboy_models/german.mdl"]
-        sensitivity = [0.5]*len(models)
+        sensitivity = [0.25]*len(models)
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity, audio_gain=1)
 
         callbacks = [self.detected_teddy,
