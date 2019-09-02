@@ -10,14 +10,6 @@ from HTMLParser import HTMLParser
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
-TRANSLATE_LANGUAGE_CODE_ENGLISH = "en"
-TTS_VOICE_CODE_ENGLISH = "en-US-Wavenet-D"
-TTS_LANGUAGE_CODE_ENGLISH = "en-US"
-
-TRANSLATE_LANGUAGE_CODE_FRENCH = "fr"
-TTS_VOICE_CODE_FRENCH = "fr-FR-Standard-D"
-TTS_LANGUAGE_CODE_FRENCH = "fr-FR"
-
 
 VISION_URL = "https://vision.googleapis.com/v1/images:annotate?key=" + API_KEY
 TRANSLATE_URL = "https://translation.googleapis.com/language/translate/v2?key=" + API_KEY
@@ -25,6 +17,15 @@ TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1/text:synthesize?key
 
 
 class CloudService:
+
+    TRANSLATE_LANGUAGE_CODE_ENGLISH = "en"
+    TTS_VOICE_CODE_ENGLISH = "en-US-Wavenet-D"
+    TTS_LANGUAGE_CODE_ENGLISH = "en-US"
+
+    TRANSLATE_LANGUAGE_CODE_FRENCH = "fr"
+    TTS_VOICE_CODE_FRENCH = "fr-FR-Standard-D"
+    TTS_LANGUAGE_CODE_FRENCH = "fr-FR"
+
 
     def encode_file_as_base64(self, image_path):
         with open(image_path, "rb") as image_file:
