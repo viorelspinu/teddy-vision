@@ -107,7 +107,7 @@ class CloudService:
         tts_voice_code = self.TTS_VOICE_CODE_ENGLISH
         tts_language_code = self.TTS_LANGUAGE_CODE_ENGLISH
 
-        if ("fr" == self.configuration_service.read_configuration().language):
+        if ("fr" == self.configuration_service.read_configuration()['language']):
             translate_language_code = self.TRANSLATE_LANGUAGE_CODE_FRENCH
             tts_voice_code = self.TTS_VOICE_CODE_FRENCH
             tts_language_code = self.TTS_LANGUAGE_CODE_FRENCH
