@@ -27,6 +27,10 @@ class CloudService:
     TTS_VOICE_CODE_FRENCH = "fr-FR-Standard-D"
     TTS_LANGUAGE_CODE_FRENCH = "fr-FR"
 
+    TRANSLATE_LANGUAGE_CODE_GERMAN = "de"
+    TTS_VOICE_CODE_GERMAN = "de-DE-Wavenet-D"
+    TTS_LANGUAGE_CODE_GERMAN = "de-DE"
+
     def __init__(self):
         self.configuration_service = ConfigurationService()
 

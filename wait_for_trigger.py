@@ -44,6 +44,13 @@ class WaitForTriggerService:
         RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
+    def detected_german(self):
+        self.__will_stop = True        
+        print "German Detected"
+        local_communication_service.getInstance().write_hotword("german")
+        RGBLedService.getInstance().set_color(1, 0, 0)
+        self.terminate_detector()
+
     def detected_shutdown(self):   
         self.__will_stop = True             
         print "Shutdown Detected"
@@ -89,14 +96,16 @@ class WaitForTriggerService:
         sonar_thread.daemon = True
         sonar_thread.start()
 
-        models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl", "./snowboy_models/english.mdl", "./snowboy_models/shutdown.mdl"]
-        self.detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1)
+        models = ["./snowboy_models/teddy.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl", "./snowboy_models/english.mdl", "./snowboy_models/shutdown.mdl", "./snowboy_models/german.mdl"]
+        self.detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5, audio_gain=1.1)
 
         callbacks = [self.detected_teddy,
                      self.detected_explore,
                      self.detected_french,
                      self.detected_english,
-                     self.detected_shutdown]
+                     self.detected_shutdown,
+                     self.detected_german,
+                     ]
 
         self.detector.start(detected_callback=callbacks, interrupt_check=self.interrupt_callback)
 
