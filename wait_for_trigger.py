@@ -45,11 +45,11 @@ class WaitForTriggerService:
         self.terminate_detector()
 
     def detected_shutdown(self):   
-        #self.__will_stop = True     
-        #RGBLedService.getInstance().set_color(1, 0, 0)
+        self.__will_stop = True             
         print "Shutdown Detected"
-        #local_communication_service.getInstance().write_hotword("shutdown")
-        #self.terminate_detector()
+        local_communication_service.getInstance().write_hotword("shutdown")
+        RGBLedService.getInstance().set_color(1, 0, 0)
+        self.terminate_detector()
 
     def terminate_detector(self):
         self.__interrupted = True
