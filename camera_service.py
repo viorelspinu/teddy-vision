@@ -13,6 +13,15 @@ class CameraService:
 
     def __init__(self):
         self.camera = PiCamera()
+        self.camera.iso = 100
+        # Wait for the automatic gain control to settle
+        sleep(2)
+        # Now fix the values
+        self.camera.shutter_speed = camera.exposure_speed
+        self.camera.exposure_mode = 'off'
+        g = self.camera.awb_gains
+        self.camera.awb_mode = 'off'
+        self.camera.awb_gains = g
         CameraService.__instance = self
 
     def take_photo(self, file_path):
