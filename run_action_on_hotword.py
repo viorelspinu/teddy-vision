@@ -27,6 +27,12 @@ class RunActionOnHotword:
             os.system("rm use_french")
             print("will update configuration file with English")
 
+        if ("shutdown" == hotword):
+            os.system("aplay ./wav/english.wav")
+            os.system("touch use_english")
+            os.system("rm use_french")
+            print("will update configuration file with English")            
+
 
 run_action_on_hotword = RunActionOnHotword()
 run_action_on_hotword.run()
