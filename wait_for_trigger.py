@@ -22,9 +22,9 @@ class WaitForTriggerService:
         local_communication_service.getInstance().write_hotword("teddy")
 
     def detected_explore(self):
+        print "Explore Detected"
         self.terminate_detector()
         RGBLedService.getInstance().set_color(1, 0, 0)
-        print "Explore Detected"
         local_communication_service.getInstance().write_hotword("explore")
 
     def detected_french(self):
