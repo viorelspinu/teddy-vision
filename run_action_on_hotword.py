@@ -2,6 +2,7 @@ import os
 from local_communication_service import LocalCommunicationService as local_communication_service
 from vision_service import VisionService
 from configuration_service import ConfigurationService
+from rgb_led_service import RGBLedService
 
 
 class RunActionOnHotword:
@@ -11,6 +12,7 @@ class RunActionOnHotword:
 
     def run(self):
         hotword = local_communication_service.getInstance().read_hotword()
+        RGBLedService.getInstance().set_color(1, 0, 0)
         if ("teddy" == hotword):
             os.system("aplay ./wav/yes.wav")
             os.system("./run_assistant_instance.sh")

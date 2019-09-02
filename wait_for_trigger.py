@@ -25,8 +25,8 @@ class WaitForTriggerService:
 
     def detected_explore(self):
         self.__will_stop = True
-        print "Explore Detected"
         RGBLedService.getInstance().set_color(1, 0, 0)
+        print "Explore Detected"
         local_communication_service.getInstance().write_hotword("explore")
         self.terminate_detector()
 
@@ -82,6 +82,7 @@ class WaitForTriggerService:
                 self.detected_teddy()
 
     def main(self):
+        RGBLedService.getInstance().set_color(0, 0, 1)
         self.sonar_service = SonarService.getInstance()
 
         sonar_thread = threading.Thread(target=self.watch_sonar)
