@@ -13,7 +13,6 @@ class RunActionOnHotword:
     def run(self):
         hotword = local_communication_service.getInstance().read_hotword()
         RGBLedService.getInstance().set_color(1, 0, 0)
-        sleep(0.5)
 
         if ("teddy" == hotword):
             os.system("aplay ./wav/yes_sir.wav")
