@@ -41,7 +41,7 @@ class RunActionOnHotword:
             configuration_data['language'] = "de"
             self.configuration_service.write_configuration(configuration_data)
             os.system("aplay ./wav/german.wav")
-            print("will use english")            
+            print("will use german")            
 
         if ("shutdown" == hotword):
             os.system("aplay ./wav/shutdown_response.wav")
