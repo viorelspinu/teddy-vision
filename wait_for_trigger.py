@@ -55,7 +55,7 @@ class WaitForTriggerService:
     def watch_sonar(self):
         while (not self.__interrupted):
             distance = self.sonar_service.measure()
-
+            print(distance)
             if (distance < 15):
                 RGBLedService.getInstance().set_color(1, 1, 1)
                 self.__very_small_distance_sonar_counter = self.__very_small_distance_sonar_counter + 1
