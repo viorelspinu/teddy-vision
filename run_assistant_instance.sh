@@ -12,4 +12,4 @@ aplay ./assistant_response_loud.wav
 sleep 0.1
 
 
-cp --backup ./assistant_response_loud.wav ./audio-logs/
+#cp --backup ./assistant_response_loud.wav ./audio-logs/
