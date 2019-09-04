@@ -16,6 +16,7 @@ class WaitForTriggerService:
     __will_stop = False
     __small_distance_sonar_counter = 0
     __very_small_distance_sonar_counter = 0
+    __digital_distance_counter = 0
 
     def detected_teddy(self):
         self.__will_stop = True
@@ -71,8 +72,10 @@ class WaitForTriggerService:
             active = not self.digital_distance_sensor.measure()
 
             if (active):
-                print(active)
-                #self.detected_teddy()
+                self.__digital_distance_counter = self.__digital_distance_counter + 1
+            else:
+                self.__digital_distance_counter = 0
+            print(self.__digital_distance_counter)
 
     def watch_sonar(self):
         while (not self.__interrupted and not self.__will_stop):
