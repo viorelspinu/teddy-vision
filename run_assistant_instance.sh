@@ -5,6 +5,14 @@ python ./record_audio_service.py
 
 if [ $? -eq 0 ]
 then
+  echo "Successfully executed script"
+else
+  # Redirect stdout from echo command to stderr.
+  echo "Script exited with error." >&2
+fi
+
+if [ $? -eq 0 ]
+then
     exit 1
 fi
 ffmpeg -i ./hello.wav -ar 11025 -ac 2 output.wav -y > /dev/null 2>&1 < /dev/null
