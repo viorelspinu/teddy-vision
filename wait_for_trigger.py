@@ -79,7 +79,7 @@ class WaitForTriggerService:
             if (self.__digital_distance_counter > 500):
                 print("detected tedy")
                 print(self.__digital_distance_counter)
-                self.detected_teddy()
+                #self.detected_teddy()
 
     def watch_sonar(self):
         while (not self.__interrupted and not self.__will_stop):
