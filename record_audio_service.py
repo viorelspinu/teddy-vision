@@ -43,7 +43,6 @@ class RecordAudioService:
             data = self.stream.read(self.CHUNK)
             rms_value = self.rms(data)
             self.frames.append(data)
-            print(rms_value)
             if (rms_value < 90):
                 silence_count = silence_count + 1
             else:
@@ -62,6 +61,8 @@ class RecordAudioService:
 
         if (voice_count < 5):
             sys.exit(1)
+        print("voice count=")
+        print(voice_count)
 
         wf = wave.open(self.WAVE_OUTPUT_FILENAME, 'wb')
         wf.setnchannels(self.RESPEAKER_CHANNELS)
