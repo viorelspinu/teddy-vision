@@ -69,10 +69,9 @@ class WaitForTriggerService:
     def watch_distance_sensor(self):
         while (not self.__interrupted and not self.__will_stop):
             active = not self.digital_distance_sensor.measure()
-            print(active)
 
             if (active):
-                print("")
+                print(active)
                 #self.detected_teddy()
 
     def watch_sonar(self):
