@@ -93,7 +93,7 @@ class WaitForTriggerService:
                 self.__very_small_distance_sonar_counter = self.__very_small_distance_sonar_counter + 1
             else:
                 self.__very_small_distance_sonar_counter = 0
-                if(distance < 55):
+                if(distance < 45):
                     RGBLedService.getInstance().set_color(0, 1, 0)
                     self.__small_distance_sonar_counter = self.__small_distance_sonar_counter + 1
                 else:
