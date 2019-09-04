@@ -1,20 +1,20 @@
+import snowboydecoder
+import os
+import threading
+import time
+from local_communication_service import LocalCommunicationService as local_communication_service
+from digital_sensor_distance_service import DigitalSensorDistanceService
+from sonar_service import SonarService
+from rgb_led_service import RGBLedService
 import sys
 sys.path.append('./snowboy')
-from rgb_led_service import RGBLedService
-from sonar_service import SonarService
-from local_communication_service import LocalCommunicationService as local_communication_service
-import time
-import threading
-import os
-import snowboydecoder
-
 
 
 class WaitForTriggerService:
     __interrupted = False
     __will_stop = False
     __small_distance_sonar_counter = 0
-    __very_small_distance_sonar_counter = 0    
+    __very_small_distance_sonar_counter = 0
 
     def detected_teddy(self):
         self.__will_stop = True
@@ -24,35 +24,35 @@ class WaitForTriggerService:
         self.terminate_detector()
 
     def detected_explore(self):
-        self.__will_stop = True        
+        self.__will_stop = True
         print "Explore Detected"
         local_communication_service.getInstance().write_hotword("explore")
         RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
-    def detected_french(self):  
-        self.__will_stop = True              
+    def detected_french(self):
+        self.__will_stop = True
         print "French Detected"
         local_communication_service.getInstance().write_hotword("french")
         RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
     def detected_english(self):
-        self.__will_stop = True        
+        self.__will_stop = True
         print "English Detected"
         local_communication_service.getInstance().write_hotword("english")
         RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
     def detected_german(self):
-        self.__will_stop = True        
+        self.__will_stop = True
         print "German Detected"
         local_communication_service.getInstance().write_hotword("german")
         RGBLedService.getInstance().set_color(1, 0, 0)
         self.terminate_detector()
 
-    def detected_shutdown(self):   
-        self.__will_stop = True             
+    def detected_shutdown(self):
+        self.__will_stop = True
         print "Shutdown Detected"
         local_communication_service.getInstance().write_hotword("shutdown")
         RGBLedService.getInstance().set_color(1, 0, 0)
@@ -65,10 +65,17 @@ class WaitForTriggerService:
     def interrupt_callback(self):
         return self.__interrupted
 
+    def watch_distance_sensor(self):
+        while (not self.__interrupted and not self.__will_stop):
+            active = not self.digital_distance_sensor.measure()
+
+            if (active):
+                self.detected_teddy()
+
     def watch_sonar(self):
-        while (not self.__interrupted and not self.__will_stop):            
+        while (not self.__interrupted and not self.__will_stop):
             distance = self.sonar_service.measure()
-            #print(distance)
+            # print(distance)
             if (distance < 15):
                 RGBLedService.getInstance().set_color(1, 1, 1)
                 self.__very_small_distance_sonar_counter = self.__very_small_distance_sonar_counter + 1
@@ -82,7 +89,7 @@ class WaitForTriggerService:
                     self.__small_distance_sonar_counter = 0
 
             if (self.__small_distance_sonar_counter > 3):
-                print ("self.__small_distance_sonar_counter > 3")
+                print("self.__small_distance_sonar_counter > 3")
                 self.detected_explore()
 
             if (self.__very_small_distance_sonar_counter > 3):
@@ -91,13 +98,20 @@ class WaitForTriggerService:
     def main(self):
         RGBLedService.getInstance().set_color(0, 0, 1)
         self.sonar_service = SonarService.getInstance()
+        self.digital_distance_sensor = DigitalSensorDistanceService.getInstance()
 
         sonar_thread = threading.Thread(target=self.watch_sonar)
         sonar_thread.daemon = True
         sonar_thread.start()
 
-        models = ["./snowboy_models/listen.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl", "./snowboy_models/english.mdl", "./snowboy_models/shutdown.mdl", "./snowboy_models/german.mdl"]
-        
+        distance_thread = threading.Thread(target=self.watch_distance_sensor)
+        distance_thread.daemon = True
+        distance_thread.start()
+
+
+        models = ["./snowboy_models/listen.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl",
+                  "./snowboy_models/english.mdl", "./snowboy_models/shutdown.mdl", "./snowboy_models/german.mdl"]
+
         sensitivity = [0.4, 0.4, 0.4, 0.4, 0.4, 0.4]
 
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity, audio_gain=1)
