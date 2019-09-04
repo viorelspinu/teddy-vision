@@ -2,7 +2,11 @@ cd conf
 ./restore_sound_volume.sh
 cd ..
 python ./record_audio_service.py
-(($? != 0)) && { printf '%s\n' "Command exited with non-zero"; exit 1; }
+
+if [ $? -eq 0 ]
+then
+    exit 1
+fi
 ffmpeg -i ./hello.wav -ar 11025 -ac 2 output.wav -y > /dev/null 2>&1 < /dev/null
 aplay ./wav/one_sec.wav
 export PROJECT_ID=teddy-assistant
