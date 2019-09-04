@@ -76,7 +76,7 @@ class WaitForTriggerService:
             else:
                 self.__digital_distance_counter = 0
 
-            if (self.__digital_distance_counter > 500):
+            if (self.__digital_distance_counter > 5000):
                 print("detected tedy")
                 print(self.__digital_distance_counter)
                 #self.detected_teddy()
