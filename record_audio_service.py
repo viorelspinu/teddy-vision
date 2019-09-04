@@ -59,10 +59,10 @@ class RecordAudioService:
         self.stream.close()
         self.p.terminate()
 
-        if (voice_count < 5):
-            sys.exit(1)
         print("voice count=")
         print(voice_count)
+        if (voice_count < 5):
+            sys.exit(1)
 
         wf = wave.open(self.WAVE_OUTPUT_FILENAME, 'wb')
         wf.setnchannels(self.RESPEAKER_CHANNELS)
