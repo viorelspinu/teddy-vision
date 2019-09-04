@@ -2,6 +2,7 @@ import pyaudio
 import wave
 import struct
 import math
+import sys
 
 
 class RecordAudioService:
@@ -35,6 +36,8 @@ class RecordAudioService:
         self.frames = []
 
         silence_count = 0
+        voice_count = 0
+
 
         for i in range(0, int(self.RESPEAKER_RATE / self.CHUNK * self.RECORD_SECONDS)):
             data = self.stream.read(self.CHUNK)
@@ -45,6 +48,7 @@ class RecordAudioService:
                 silence_count = silence_count + 1
             else:
                 silence_count = 0
+                voice_count = voice_count + 1
 
             if (silence_count > 10):
                 if (i > 30):
@@ -55,6 +59,9 @@ class RecordAudioService:
         self.stream.stop_stream()
         self.stream.close()
         self.p.terminate()
+
+        if (voice_count < 5):
+            sys.exit(1)
 
         wf = wave.open(self.WAVE_OUTPUT_FILENAME, 'wb')
         wf.setnchannels(self.RESPEAKER_CHANNELS)
