@@ -77,6 +77,8 @@ class WaitForTriggerService:
                 self.__digital_distance_counter = 0
 
             if (self.__digital_distance_counter > 500):
+                print("detected tedy")
+                print(self.__digital_distance_counter)
                 self.detected_teddy()
 
     def watch_sonar(self):
