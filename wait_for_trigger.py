@@ -100,7 +100,7 @@ class WaitForTriggerService:
                     RGBLedService.getInstance().set_color(0, 0, 1)
                     self.__small_distance_sonar_counter = 0
 
-            if (self.__small_distance_sonar_counter > 3):
+            if (self.__small_distance_sonar_counter > 10):
                 print("self.__small_distance_sonar_counter > 3")
                 self.detected_explore()
 
