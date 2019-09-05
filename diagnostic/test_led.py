@@ -1,6 +1,6 @@
 
 import sys
-sys.path.append('./snowboy')
+sys.path.append('../')
 
 from rgb_led_service import RGBLedService
 from time import sleep
