@@ -125,7 +125,7 @@ class WaitForTriggerService:
 
 
         models = ["./snowboy_models/listen.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl",
-                  "./snowboy_models/english.mdl", "./snowboy_models/shutdown.mdl", "./snowboy_models/german.mdl"]
+                  "./snowboy_models/english.mdl",  "./snowboy_models/german.mdl"]
 
         sensitivity = [0.4, 0.4, 0.4, 0.4, 0.4, 0.4]
 
@@ -135,7 +135,6 @@ class WaitForTriggerService:
                      self.detected_explore,
                      self.detected_french,
                      self.detected_english,
-                     self.detected_shutdown,
                      self.detected_german,
                      ]
 
