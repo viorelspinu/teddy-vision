@@ -16,7 +16,8 @@ class WaitForTriggerService:
     __will_stop = False
     __small_distance_sonar_counter = 0
     __very_small_distance_sonar_counter = 0
-    __digital_distance_counter = 0
+    __digital_distance_active_counter = 0
+    __digital_distance_negative_counter = 0
 
     def detected_teddy(self):
         self.__will_stop = True
@@ -72,20 +73,20 @@ class WaitForTriggerService:
             active = not self.digital_distance_sensor.measure()
 
             if (active):
-                self.__digital_distance_counter = self.__digital_distance_counter + 1
+                self.__digital_distance_active_counter = self.__digital_distance_active_counter + 1
+                self.__digital_distance_negative_counter = 0
             else:
+                self.__digital_distance_active_counter = 0
+                self.__digital_distance_negative_counter = self.__digital_distance_negative_counter + 1
 
+            if (self.__digital_distance_negative_counter > 10):
                 if (self.__digital_distance_counter > 10):
                     print("detected tedy by digital sensor")
-                    self.detected_teddy()
-
-                self.__digital_distance_counter = 0
-                
+                    self.detected_teddy()    
 
             if (self.__digital_distance_counter > 300):
                 print("detected tedy by digital sensor")
                 self.detected_shutdown()
-
 
             time.sleep(0.01)
 
