@@ -71,6 +71,9 @@ class WaitForTriggerService:
     def watch_distance_sensor(self):
         while (not self.__interrupted and not self.__will_stop):
             active = not self.digital_distance_sensor.measure()
+            print(self.__digital_distance_active_counter)
+            print(self.__digital_distance_negative_counter)
+
 
             if (active):
                 self.__digital_distance_active_counter = self.__digital_distance_active_counter + 1
@@ -87,10 +90,10 @@ class WaitForTriggerService:
             if (self.__digital_distance_counter > 300):
                 print("detected tedy by digital sensor")
                 self.detected_shutdown()
-
+            
+            
             time.sleep(0.01)
-            print(self.__digital_distance_active_counter)
-            print(self.__digital_distance_negative_counter)
+
 
     def watch_sonar(self):
         while (not self.__interrupted and not self.__will_stop):
