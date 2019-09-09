@@ -74,19 +74,18 @@ class WaitForTriggerService:
 
             if (active):
                 self.__digital_distance_active_counter = self.__digital_distance_active_counter + 1
-            else:
-                self.__digital_distance_active_counter = 0
-                print(self.__digital_distance_active_counter)
+            else:                
                 if (self.__digital_distance_active_counter > 10):
                     print("detected tedy by digital sensor")
                     self.detected_teddy()
+                self.__digital_distance_active_counter = 0
 
             if (self.__digital_distance_active_counter > 300):
                 print("detected tedy by digital sensor")
                 self.detected_shutdown()            
 
             if (self.__digital_distance_active_counter > 3):
-                RGBLedService.getInstance().set_color(1, 1, 1)
+                RGBLedService.getInstance().set_color(1, 0, 1)
             
             time.sleep(0.01)
 
