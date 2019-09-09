@@ -89,6 +89,8 @@ class WaitForTriggerService:
                 self.detected_shutdown()
 
             time.sleep(0.01)
+            print(self.__digital_distance_active_counter)
+            print(self.__digital_distance_negative_counter)
 
     def watch_sonar(self):
         while (not self.__interrupted and not self.__will_stop):
