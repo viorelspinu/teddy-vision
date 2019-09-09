@@ -1,0 +1,12 @@
+.........
+........
+#sudo nano /etc/rc.local
+
+#add next two lines to  /etc/rc.local right before "exit 0"
+
+
+aplay /home/pi/teddy-vision/wav/up_and_running.wav
+/home/pi/teddy-vision/start.sh &
+
+
+exit 0
