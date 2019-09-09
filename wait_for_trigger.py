@@ -73,8 +73,8 @@ class WaitForTriggerService:
             active = not self.digital_distance_sensor.measure()
             print(active)
 
-            print(self.__digital_distance_active_counter)
-            print(self.__digital_distance_negative_counter)
+#            print(self.__digital_distance_active_counter)
+#            print(self.__digital_distance_negative_counter)
 
 
             if (active):
