@@ -71,6 +71,8 @@ class WaitForTriggerService:
     def watch_distance_sensor(self):
         while (not self.__interrupted and not self.__will_stop):
             active = not self.digital_distance_sensor.measure()
+            print(active)
+            
             print(self.__digital_distance_active_counter)
             print(self.__digital_distance_negative_counter)
 
