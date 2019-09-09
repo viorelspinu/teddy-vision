@@ -127,7 +127,7 @@ class WaitForTriggerService:
         models = ["./snowboy_models/listen.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl",
                   "./snowboy_models/english.mdl",  "./snowboy_models/german.mdl"]
 
-        sensitivity = [0.4, 0.4, 0.4, 0.4, 0.4, 0.4]
+        sensitivity = [0.5, 0.5, 0.5, 0.5, 0.5]
 
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity, audio_gain=1)
 
