@@ -84,7 +84,7 @@ class WaitForTriggerService:
                 print("detected tedy by digital sensor")
                 self.detected_shutdown()            
 
-            if (self.__digital_distance_active_counter > 3):
+            if (self.__digital_distance_active_counter > 5):
                 RGBLedService.getInstance().set_color(1, 0, 1)
             
             time.sleep(0.01)
