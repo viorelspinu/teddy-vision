@@ -71,11 +71,6 @@ class WaitForTriggerService:
     def watch_distance_sensor(self):
         while (not self.__interrupted and not self.__will_stop):
             active = not self.digital_distance_sensor.measure()
-            print(active)
-
-#            print(self.__digital_distance_active_counter)
-#            print(self.__digital_distance_negative_counter)
-
 
             if (active):
                 self.__digital_distance_active_counter = self.__digital_distance_active_counter + 1
@@ -83,14 +78,14 @@ class WaitForTriggerService:
             else:
                 self.__digital_distance_negative_counter = self.__digital_distance_negative_counter + 1
 
-            if (self.__digital_distance_negative_counter > 10):
+            if (self.__digital_distance_negative_counter > 3):
                 self.__digital_distance_active_counter = 0
                 if (self.__digital_distance_active_counter > 10):
                     print("detected tedy by digital sensor")
                     self.detected_teddy()
 
             if (self.__digital_distance_active_counter > 10):
-                self.__digital_distance_active_counter = 0
+                self.__digital_distance_negative_counter = 0
 
             if (self.__digital_distance_active_counter > 300):
                 print("detected tedy by digital sensor")
