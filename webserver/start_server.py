@@ -16,14 +16,14 @@ app = Flask(__name__)
 
 def get_lang_codes():
     lang_en = {}
-    lang_en.code = CloudService.TTS_LANGUAGE_CODE_ENGLISH
-    lang_en.name = "English"
+    lang_en['code'] = CloudService.TTS_LANGUAGE_CODE_ENGLISH
+    lang_en['name'] = "English"
     lang_fr = {}
-    lang_fr.code = CloudService.TTS_LANGUAGE_CODE_FRENCH
-    lang_fr.name = "French"
+    lang_fr['code'] = CloudService.TTS_LANGUAGE_CODE_FRENCH
+    lang_fr['name'] = "French"
     lang_de = {}
-    lang_de.code = CloudService.TTS_LANGUAGE_CODE_GERMAN
-    lang_de.name = "German"
+    lang_de['code'] = CloudService.TTS_LANGUAGE_CODE_GERMAN
+    lang_de['name'] = "German"
 
     return [lang_en, lang_fr, lang_de]
 
