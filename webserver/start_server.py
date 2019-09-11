@@ -78,9 +78,7 @@ def save_settings():
     lang = languages[vision_selected_lang]
     lang_code = lang['lang_code']
     print(lang_code)
-    configuration = configuration_service.read_configuration()
-    configuration['language'] = lang_code
-    configuration_service.write_configuration(configuration)
+    configuration_service.set_vision_language(lang_code)
     
     return redirect('/')
 
