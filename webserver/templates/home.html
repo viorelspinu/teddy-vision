@@ -13,12 +13,11 @@
         <br>
         {% for i in range(languages | length): %}
             {
-                lang = languages[i]
                 selected = False
                 if (i == 0):
                     selected = True
             }
-            <input type="radio" name="lang_code" value="{{lang['lang_code']}}"> {{lang['name']}}<br>
+            <input type="radio" name="lang_code" value="{{languages[i]['lang_code']}}"> {{lang['name']}}<br>
         {% endfor %}
         <br><br>
         <input type="submit" value="Speak">
