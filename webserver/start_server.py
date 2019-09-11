@@ -1,7 +1,7 @@
 
 from flask import Flask
 from flask import render_template
-from flask import request
+from flask import request, redirect
 
 import sys
 import os
@@ -66,7 +66,8 @@ def speak():
     os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
     os.system("aplay ./out.wav")
 
-    return render_template('home.html', languages=languages)
+    return redirect(url_for('home'))
+
 
 
 if __name__ == "__main__":
