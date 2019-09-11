@@ -51,7 +51,7 @@ def get_lang_index(lang_code):
 @app.route('/')
 def hello_world():
     global selected_lang
-    return render_template('home.html', languages=languages, selected_lang=selected_lang)
+    return render_template('home.html', languages=languages, selected_lang=selected_lang, vision_selected_lang = vision_selected_lang)
 
 
 @app.route('/speak', methods=['POST'])
