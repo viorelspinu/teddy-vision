@@ -14,7 +14,7 @@ export GOOGLE_API_KEY=__YOUR_GOOGLE_API_KEY___
 
 aplay ./wav/up_and_running.wav
 python ./configuration_service.py
-python ./utils/say_ip_address.py
+python ./say_ip_address.py
 
 
 while true
