@@ -38,7 +38,7 @@ def get_lang_codes():
 
 languages = get_lang_codes()
 selected_lang = 0
-vision_selected_lang = 0
+
 
 
 def get_lang_index(lang_code):
@@ -47,6 +47,7 @@ def get_lang_index(lang_code):
         if (languages[i]['lang_code'] == lang_code):
             return i
 
+vision_selected_lang = get_lang_index(configuration_service.read_configuration()['language'])
 
 @app.route('/')
 def hello_world():
@@ -77,6 +78,9 @@ def save_settings():
     lang = languages[vision_selected_lang]
     lang_code = lang['lang_code']
     print(lang_code)
+    configuration = configuration_service.read_configuration()
+    configuration['language'] = lang_code
+    configuration_service.write_configuration(configuration)
     
     return redirect('/')
 
