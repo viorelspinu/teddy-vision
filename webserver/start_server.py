@@ -37,6 +37,7 @@ def get_lang_codes():
 
 languages = get_lang_codes()
 selected_lang = 0
+vision_selected_lang = 0
 
 
 def get_lang_index(lang_code):
@@ -70,8 +71,9 @@ def speak():
 @app.route('/save_settings', methods=['POST'])
 def save_settings():
     lang_code = request.form['lang_code']
-    selected_lang = get_lang_index(lang_code)  
-    lang = languages[selected_lang]
+    global vision_selected_lang
+    vision_selected_lang = get_lang_index(lang_code)  
+    lang = languages[vision_selected_lang]
     
     return redirect('/')
 

@@ -30,7 +30,7 @@
         When doing object recognition, use:
         <br>
         {% for i in range(languages | length): %}
-        {%  if (i == selected_lang) %}
+        {%  if (i == vision_selected_lang) %}
         <input checked="true" type="radio" name="lang_code" value="{{languages[i]['lang_code']}}"> {{languages[i]['name']}}<br>
         {% endif %}
         {%  if (not (i == selected_lang)) %}
