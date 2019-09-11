@@ -9,7 +9,7 @@
     </h2>
 
     <form action="{{ url_for('speak') }}" method="post" onsubmit="submitButton.style.visibility = 'hidden'; return true;">
-        <textarea name="text_to_speak" cols="100" rows="10"></textarea>
+        <textarea name="text_to_speak" cols="50" rows="10"></textarea>
         <br>
         {% for i in range(languages | length): %}
         {%  if (i == selected_lang) %}
