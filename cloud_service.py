@@ -72,9 +72,12 @@ class CloudService:
         r_text = r_json['data']['translations'][0]['translatedText'].encode('utf-8')
         return r_text
 
-    def do_text_to_speech_post(self, text, language_code, voice_code):
+    def do_text_to_speech_post(self, text, language_code, voice_code, ssml=False):
+        text_tag = "text"
+        if (ssml):
+            text_tag="ssml"
         json_data = {
-            "input": {"text": text.encode('utf-8')},
+            "input": {text_tag: text.encode('utf-8')},
             "voice": {
                 "languageCode": language_code,
                 "name": voice_code,
