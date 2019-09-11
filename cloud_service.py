@@ -8,6 +8,7 @@ import numpy as np
 import os.path
 from HTMLParser import HTMLParser
 from configuration_service import ConfigurationService
+import voice_codes_constants
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 
@@ -18,18 +19,6 @@ TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1/text:synthesize?key
 
 
 class CloudService:
-
-    TRANSLATE_LANGUAGE_CODE_ENGLISH = "en"
-    TTS_VOICE_CODE_ENGLISH = "en-US-Wavenet-D"
-    TTS_LANGUAGE_CODE_ENGLISH = "en-US"
-
-    TRANSLATE_LANGUAGE_CODE_FRENCH = "fr"
-    TTS_VOICE_CODE_FRENCH = "fr-FR-Standard-D"
-    TTS_LANGUAGE_CODE_FRENCH = "fr-FR"
-
-    TRANSLATE_LANGUAGE_CODE_GERMAN = "de"
-    TTS_VOICE_CODE_GERMAN = "de-DE-Wavenet-D"
-    TTS_LANGUAGE_CODE_GERMAN = "de-DE"
 
     def __init__(self):
         self.configuration_service = ConfigurationService()
@@ -109,19 +98,19 @@ class CloudService:
         for item in rows:
             data = data + str(item['description']) + ","
 
-        translate_language_code = self.TRANSLATE_LANGUAGE_CODE_ENGLISH
-        tts_voice_code = self.TTS_VOICE_CODE_ENGLISH
-        tts_language_code = self.TTS_LANGUAGE_CODE_ENGLISH
+        translate_language_code = TRANSLATE_LANGUAGE_CODE_ENGLISH
+        tts_voice_code = TTS_VOICE_CODE_ENGLISH
+        tts_language_code = TTS_LANGUAGE_CODE_ENGLISH
 
-        if (self.TTS_LANGUAGE_CODE_FRENCH == self.configuration_service.read_configuration()['language']):
-            translate_language_code = self.TRANSLATE_LANGUAGE_CODE_FRENCH
-            tts_voice_code = self.TTS_VOICE_CODE_FRENCH
-            tts_language_code = self.TTS_LANGUAGE_CODE_FRENCH
+        if (TTS_LANGUAGE_CODE_FRENCH == self.configuration_service.read_configuration()['language']):
+            translate_language_code = TRANSLATE_LANGUAGE_CODE_FRENCH
+            tts_voice_code = TTS_VOICE_CODE_FRENCH
+            tts_language_code = TTS_LANGUAGE_CODE_FRENCH
 
-        if (self.TTS_LANGUAGE_CODE_GERMAN == self.configuration_service.read_configuration()['language']):
-            translate_language_code = self.TRANSLATE_LANGUAGE_CODE_GERMAN
-            tts_voice_code = self.TTS_VOICE_CODE_GERMAN
-            tts_language_code = self.TTS_LANGUAGE_CODE_GERMAN
+        if (TTS_LANGUAGE_CODE_GERMAN == self.configuration_service.read_configuration()['language']):
+            translate_language_code = TRANSLATE_LANGUAGE_CODE_GERMAN
+            tts_voice_code = TTS_VOICE_CODE_GERMAN
+            tts_language_code = TTS_LANGUAGE_CODE_GERMAN
 
         data_translated = self.do_translate_post(data, translate_language_code).decode('utf-8')
         html_parser = HTMLParser()

@@ -5,6 +5,7 @@ from configuration_service import ConfigurationService
 from cloud_service import CloudService
 from rgb_led_service import RGBLedService
 from time import sleep
+import voice_codes_constants
 
 
 class RunActionOnHotword:
@@ -27,13 +28,13 @@ class RunActionOnHotword:
            #os.system("cp --backup ./vision_out.wav ./audio-logs/")
 
         if ("french" == hotword):
-            self.configuration_service.set_vision_language(CloudService.TTS_LANGUAGE_CODE_FRENCH)
+            self.configuration_service.set_vision_language(TTS_LANGUAGE_CODE_FRENCH)
 
         if ("english" == hotword):
-            self.configuration_service.set_vision_language(CloudService.TTS_LANGUAGE_CODE_ENGLISH)
+            self.configuration_service.set_vision_language(TTS_LANGUAGE_CODE_ENGLISH)
 
         if ("german" == hotword):
-            self.configuration_service.set_vision_language(CloudService.TTS_LANGUAGE_CODE_GERMAN)
+            self.configuration_service.set_vision_language(TTS_LANGUAGE_CODE_GERMAN)
 
         if ("shutdown" == hotword):
             os.system("aplay ./wav/shutdown_response.wav")

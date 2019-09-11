@@ -5,6 +5,7 @@ from flask import request, redirect, url_for
 
 from cloud_service import CloudService
 from configuration_service import ConfigurationService
+import voice_codes_constants
 
 cloud_service = CloudService()
 configuration_service = ConfigurationService()
@@ -14,18 +15,18 @@ app = Flask(__name__)
 
 def get_lang_codes():
     lang_en = {}
-    lang_en['lang_code'] = CloudService.TTS_LANGUAGE_CODE_ENGLISH
-    lang_en['voice_code'] = CloudService.TTS_VOICE_CODE_ENGLISH
+    lang_en['lang_code'] = TTS_LANGUAGE_CODE_ENGLISH
+    lang_en['voice_code'] = TTS_VOICE_CODE_ENGLISH
     lang_en['name'] = "English"
 
     lang_fr = {}
-    lang_fr['lang_code'] = CloudService.TTS_LANGUAGE_CODE_FRENCH
-    lang_fr['voice_code'] = CloudService.TTS_VOICE_CODE_FRENCH
+    lang_fr['lang_code'] = TTS_LANGUAGE_CODE_FRENCH
+    lang_fr['voice_code'] = TTS_VOICE_CODE_FRENCH
     lang_fr['name'] = "French"
 
     lang_de = {}
-    lang_de['lang_code'] = CloudService.TTS_LANGUAGE_CODE_GERMAN
-    lang_de['voice_code'] = CloudService.TTS_VOICE_CODE_GERMAN
+    lang_de['lang_code'] = TTS_LANGUAGE_CODE_GERMAN
+    lang_de['voice_code'] = TTS_VOICE_CODE_GERMAN
     lang_de['name'] = "German"
 
     return [lang_en, lang_fr, lang_de]
