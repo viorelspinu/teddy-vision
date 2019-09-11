@@ -1,12 +1,7 @@
-
+import os
 from flask import Flask
 from flask import render_template
 from flask import request, redirect, url_for
-
-import sys
-import os
-sys.path.append('./..')
-
 
 from cloud_service import CloudService
 from configuration_service import ConfigurationService
@@ -40,19 +35,20 @@ languages = get_lang_codes()
 selected_lang = 0
 
 
-
 def get_lang_index(lang_code):
     print(lang_code)
     for i in range(len(languages)):
         if (languages[i]['lang_code'] == lang_code):
             return i
 
+
 vision_selected_lang = get_lang_index(configuration_service.read_configuration()['language'])
+
 
 @app.route('/')
 def hello_world():
     global selected_lang
-    return render_template('home.html', languages=languages, selected_lang=selected_lang, vision_selected_lang = vision_selected_lang)
+    return render_template('home.html', languages=languages, selected_lang=selected_lang, vision_selected_lang=vision_selected_lang)
 
 
 @app.route('/speak', methods=['POST'])
@@ -60,7 +56,7 @@ def speak():
     text = request.form['text_to_speak']
     lang_code = request.form['lang_code']
     global selected_lang
-    selected_lang = get_lang_index(lang_code)  
+    selected_lang = get_lang_index(lang_code)
     lang = languages[selected_lang]
     input_text = text
     mp3_base64 = cloud_service.do_text_to_speech_post(input_text, lang['lang_code'], lang['voice_code'])
@@ -70,16 +66,17 @@ def speak():
 
     return redirect('/')
 
+
 @app.route('/save_settings', methods=['POST'])
 def save_settings():
     lang_code = request.form['lang_code']
     global vision_selected_lang
-    vision_selected_lang = get_lang_index(lang_code)  
+    vision_selected_lang = get_lang_index(lang_code)
     lang = languages[vision_selected_lang]
     lang_code = lang['lang_code']
     print(lang_code)
     configuration_service.set_vision_language(lang_code)
-    
+
     return redirect('/')
 
 
