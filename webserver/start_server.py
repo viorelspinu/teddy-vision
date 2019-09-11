@@ -66,7 +66,7 @@ def speak():
     os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
     os.system("aplay ./out.wav")
 
-    return redirect(url_for('/'))
+    return redirect('/')
 
 
 
