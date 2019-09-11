@@ -12,7 +12,7 @@
         <textarea name="text_to_speak" cols="100" rows="10"></textarea>
         <br>
         {% for lang in languages %}
-            <input type="radio" name="lang_code" value="{{lang_code['lang_code']}}"> {{lang_code['name']}}<br>
+            <input type="radio" name="lang_code" value="{{lang['lang_code']}}"> {{lang['name']}}<br>
         {% endfor %}
         <br><br>
         <input type="submit" value="Speak">
