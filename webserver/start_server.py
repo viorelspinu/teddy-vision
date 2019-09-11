@@ -48,7 +48,7 @@ def get_lang(lang_code):
 
 @app.route('/')
 def hello_world():
-    return render_template('home.html', lang_codes=languages)
+    return render_template('home.html', languages=languages)
 
 
 @app.route('/speak', methods=['POST'])
@@ -66,7 +66,7 @@ def speak():
     os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
     os.system("aplay ./out.wav")
 
-    return render_template('home.html', lang_codes=languages)
+    return render_template('home.html', languages=languages)
 
 
 if __name__ == "__main__":
