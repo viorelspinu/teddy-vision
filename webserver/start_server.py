@@ -67,6 +67,14 @@ def speak():
 
     return redirect('/')
 
+@app.route('/save_settings', methods=['POST'])
+def save_settings():
+    lang_code = request.form['lang_code']
+    selected_lang = get_lang_index(lang_code)  
+    lang = languages[selected_lang]
+    
+    return redirect('/')
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
