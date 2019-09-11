@@ -8,7 +8,7 @@
         Teddy the 2nd web interface
     </h2>
 
-    <form action="{{ url_for('speak') }}" method="post">
+    <form action="{{ url_for('speak') }}" method="post" onsubmit="submitButton.disabled = true; return true;">
         <textarea name="text_to_speak" cols="100" rows="10"></textarea>
         <br>
         {% for i in range(languages | length): %}
@@ -20,13 +20,13 @@
         {% endif %}
         {% endfor %}
         <br><br>
-        <input type="submit" value="Speak">
+        <input type="submitButton" name='submit' value="Speak">
     </form>
 
     <br><br>
     <hr>
 
-    <form action="{{ url_for('save_settings') }}" method="post">
+    <form action="{{ url_for('save_settings') }}" method="post"  onsubmit="submitButton.disabled = true; return true;">
         When doing object recognition, use:
         <br>
         {% for i in range(languages | length): %}
@@ -38,7 +38,7 @@
         {% endif %}
         {% endfor %}
         <br><br>
-        <input type="submit" value="Save Settings">
+        <input type="submitButton" value="Save Settings">
     </form>
 </body>
 
