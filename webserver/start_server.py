@@ -55,6 +55,7 @@ def hello_world():
 def speak():
     text = request.form['text_to_speak']
     lang_code = request.form['lang_code']
+    print("lang code=")
     print(lang_code)
     lang = get_lang(lang_code)
     print(lang_code)
