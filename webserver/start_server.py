@@ -48,6 +48,7 @@ def get_lang_index(lang_code):
 
 @app.route('/')
 def hello_world():
+    global selected_lang
     print("selected lang=")
     print(selected_lang)
     return render_template('home.html', languages=languages, selected_lang=selected_lang)
@@ -57,6 +58,7 @@ def hello_world():
 def speak():
     text = request.form['text_to_speak']
     lang_code = request.form['lang_code']
+    global selected_lang
     selected_lang = get_lang_index(lang_code)  
     print("selected lang=")
     print(selected_lang)  
