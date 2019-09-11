@@ -1,4 +1,8 @@
 import simplejson as json
+
+import sys
+sys.path.append('./..')
+
 from cloud_service import CloudService
 
 
