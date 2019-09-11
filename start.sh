@@ -3,6 +3,8 @@
 cd /home/pi/teddy-vision
 export PATH=$PATH:/home/pi/.local/bin 
 
+sudo kilall python
+
 cd ./conf
 ./restore_sound_volume.sh
 cd ..
