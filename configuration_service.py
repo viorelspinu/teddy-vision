@@ -1,5 +1,6 @@
 import simplejson as json
 from voice_codes_constants import *
+import os
 
 class ConfigurationService:
     __CONFIGURATION_FILE = "/home/pi/teddy-vision/configuration.json"
