@@ -10,6 +10,10 @@
 
     <form action="{{ url_for('speak') }}" method="post">
         <textarea name="text_to_speak" cols="100" rows="10"></textarea>
+        <br>
+        <input type="radio" name="lang" value="en"> English<br>
+        <input type="radio" name="lang" value="fr"> French<br>
+        <input type="radio" name="lang" value="de"> German<br>
 
         <br><br>
         <input type="submit" value="Speak">
