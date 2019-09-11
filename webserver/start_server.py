@@ -39,7 +39,9 @@ lang_codes = get_lang_codes()
 
 
 def get_lang(lang_code):
+    print(lang_code)
     for lang in lang_codes:
+        print(lang)
         if (lang['lang_code'] == lang_code):
             return lang
 
