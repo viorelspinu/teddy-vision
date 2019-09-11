@@ -75,6 +75,8 @@ def save_settings():
     global vision_selected_lang
     vision_selected_lang = get_lang_index(lang_code)  
     lang = languages[vision_selected_lang]
+    lang_code = lang['lang_code']
+    print(lang_code)
     
     return redirect('/')
 
