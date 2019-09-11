@@ -9,9 +9,10 @@ sys.path.append('./..')
 
 
 from cloud_service import CloudService
+from configuration_service import ConfigurationService
 
 cloud_service = CloudService()
-
+configuration_service = ConfigurationService()
 
 app = Flask(__name__)
 
