@@ -41,7 +41,7 @@ selected_lang = 0
 
 def get_lang_index(lang_code):
     print(lang_code)
-    for i in range(languages | length):
+    for i in range(len(languages)):
         if (languages[i]['lang_code'] == lang_code):
             return i
 
