@@ -40,6 +40,14 @@
         <br><br>
         <input type="submit" name="submitButton" value="Save Settings">
     </form>
+
+    <br><br>
+    <hr>
+
+    <form action="{{ url_for('shutdown') }}" method="post"  onsubmit="submitButton.style.visibility = 'hidden'; return true;">
+            It is important not to unplug Teddy, but use below button for shutdown to allow the SD card to flush.<br>
+            <input type="submit" name="submitButton" value="Shutdown Teddy">
+        </form>
 </body>
 
 </html>

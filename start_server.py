@@ -81,5 +81,12 @@ def save_settings():
     return redirect('/')
 
 
+@app.route('/shutdown', methods=['POST'])
+def shutdown():
+    os.system("aplay ./wav/shutdown_response.wav")
+    os.system("sudo shutdown -h now")
+    return redirect('/')
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
