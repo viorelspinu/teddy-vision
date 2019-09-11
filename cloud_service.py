@@ -8,7 +8,7 @@ import numpy as np
 import os.path
 from HTMLParser import HTMLParser
 from configuration_service import ConfigurationService
-import voice_codes_constants
+from voice_codes_constants import *
 
 API_KEY = os.environ['GOOGLE_API_KEY']
 

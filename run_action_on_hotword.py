@@ -5,7 +5,7 @@ from configuration_service import ConfigurationService
 from cloud_service import CloudService
 from rgb_led_service import RGBLedService
 from time import sleep
-import voice_codes_constants
+from voice_codes_constants import *
 
 
 class RunActionOnHotword:
