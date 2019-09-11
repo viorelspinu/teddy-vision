@@ -1,3 +1,4 @@
+from cloud_service import CloudService
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -5,7 +6,6 @@ from flask import request
 import sys
 import os
 sys.path.append('./..')
-from cloud_service import CloudService
 
 
 cloud_service = CloudService()
@@ -36,9 +36,10 @@ def hello_world():
 @app.route('/speak', methods=['POST'])
 def speak():
     text = request.form['text_to_speak']
+    lang_code = request.form['lang_code']
     print(text)
     input_text = text
-    mp3_base64 = cloud_service.do_text_to_speech_post(input_text, CloudService.TTS_LANGUAGE_CODE_ENGLISH, CloudService.TTS_VOICE_CODE_ENGLISH)
+    mp3_base64 = cloud_service.do_text_to_speech_post(input_text, CloudService.TTS_LANGUAGE_CODE_ENGLISH, lang_code)
     cloud_service.decode_text_to_file_as_base64(mp3_base64, "out.mp3")
     os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
     os.system("aplay ./out.wav")
