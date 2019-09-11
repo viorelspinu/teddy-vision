@@ -11,7 +11,7 @@
     <form action="{{ url_for('speak') }}" method="post">
         <textarea name="text_to_speak" cols="100" rows="10"></textarea>
         <br>
-        {% for i in range(len(languages)): %}
+        {% for i in range(languages.count()): %}
             {
                 lang = languages[i]
                 selected = False
