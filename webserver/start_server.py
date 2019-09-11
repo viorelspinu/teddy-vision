@@ -48,6 +48,8 @@ def get_lang_index(lang_code):
 
 @app.route('/')
 def hello_world():
+    print("selected lang=")
+    print(selected_lang)
     return render_template('home.html', languages=languages, selected_lang=selected_lang)
 
 
@@ -65,7 +67,7 @@ def speak():
     os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
     os.system("aplay ./out.wav")
 
-    return redirect('/', selected_lang=selected_lang)
+    return redirect('/')
 
 
 if __name__ == "__main__":
