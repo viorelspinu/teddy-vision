@@ -7,5 +7,5 @@ sudo apt-get -yq install  python-simplejson
 sudo apt-get -yq install  python-pygame
 sudo apt-get -yq install  python-pyaudio
 sudo apt-get -yq install python-pyaudio python3-pyaudio sox
-sudo apt-get install python-pyaudio python-pip libatlas-base-dev portaudio19-dev
+sudo apt-get -yq install python-pyaudio python-pip libatlas-base-dev portaudio19-dev
 pip install pyaudio --user
