@@ -1,7 +1,7 @@
 import simplejson as json
 
 import sys
-sys.path.append('./..')
+sys.path.append('/home/pi/teddy-vision')
 
 from cloud_service import CloudService
 
