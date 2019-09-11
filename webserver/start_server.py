@@ -37,6 +37,7 @@ def hello_world():
 def speak():
     text = request.form['text_to_speak']
     lang_code = request.form['lang_code']
+    print(lang_code)
     print(text)
     input_text = text
     mp3_base64 = cloud_service.do_text_to_speech_post(input_text, CloudService.TTS_LANGUAGE_CODE_ENGLISH, lang_code)
