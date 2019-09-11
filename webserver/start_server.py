@@ -49,8 +49,6 @@ def get_lang_index(lang_code):
 @app.route('/')
 def hello_world():
     global selected_lang
-    print("selected lang=")
-    print(selected_lang)
     return render_template('home.html', languages=languages, selected_lang=selected_lang)
 
 
@@ -60,11 +58,7 @@ def speak():
     lang_code = request.form['lang_code']
     global selected_lang
     selected_lang = get_lang_index(lang_code)  
-    print("selected lang=")
-    print(selected_lang)  
     lang = languages[selected_lang]
-    print(lang_code)
-    print(text)
     input_text = text
     mp3_base64 = cloud_service.do_text_to_speech_post(input_text, lang['lang_code'], lang['voice_code'])
     cloud_service.decode_text_to_file_as_base64(mp3_base64, "out.mp3")

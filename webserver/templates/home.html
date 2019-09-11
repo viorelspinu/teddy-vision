@@ -22,6 +22,24 @@
         <br><br>
         <input type="submit" value="Speak">
     </form>
+
+    <br><br>
+    <hr>
+
+    <form action="{{ url_for('save_settings') }}" method="post">
+        When doing object recognition, use:
+        <br>
+        {% for i in range(languages | length): %}
+        {%  if (i == selected_lang) %}
+        <input checked="true" type="radio" name="lang_code" value="{{languages[i]['lang_code']}}"> {{languages[i]['name']}}<br>
+        {% endif %}
+        {%  if (not (i == selected_lang)) %}
+        <input type="radio" name="lang_code" value="{{languages[i]['lang_code']}}"> {{languages[i]['name']}}<br>
+        {% endif %}
+        {% endfor %}
+        <br><br>
+        <input type="submit" value="Speak">
+    </form>
 </body>
 
 </html>
