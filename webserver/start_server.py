@@ -1,4 +1,4 @@
-from cloud_service import CloudService
+
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -6,7 +6,7 @@ from flask import request
 import sys
 import os
 sys.path.append('./..')
-
+from cloud_service import CloudService
 
 cloud_service = CloudService()
 
