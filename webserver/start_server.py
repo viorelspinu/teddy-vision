@@ -36,28 +36,27 @@ def get_lang_codes():
 
 
 languages = get_lang_codes()
+selected_lang = 0
 
 
-def get_lang(lang_code):
+def get_lang_index(lang_code):
     print(lang_code)
-    for lang in languages:
-        print(lang)
-        if (lang['lang_code'] == lang_code):
-            return lang
+    for i in range(languages | length):
+        if (languages[i]lang['lang_code'] == lang_code):
+            return i
 
 
 @app.route('/')
 def hello_world():
-    return render_template('home.html', languages=languages)
+    return render_template('home.html', languages=languages, selected_lang=selected_lang)
 
 
 @app.route('/speak', methods=['POST'])
 def speak():
     text = request.form['text_to_speak']
     lang_code = request.form['lang_code']
-    print("lang code=")
-    print(lang_code)
-    lang = get_lang(lang_code)
+    lang_index = get_lang(lang_code)
+    lang = languages[lang_index]
     print(lang_code)
     print(text)
     input_text = text
@@ -67,7 +66,6 @@ def speak():
     os.system("aplay ./out.wav")
 
     return redirect('/')
-
 
 
 if __name__ == "__main__":
