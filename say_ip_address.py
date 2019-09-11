@@ -1,10 +1,7 @@
 import sys
 import os
-sys.path.append('./..')
 import socket
-
 from cloud_service import CloudService
-
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
