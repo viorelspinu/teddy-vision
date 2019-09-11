@@ -15,7 +15,7 @@
         {%  if (i == selected_language) %}
         <input checked="true" type="radio" name="lang_code" value="{{languages[i]['lang_code']}}"> {{languages[i]['name']}}<br>
         {% endif %}
-        {%  if (i > 0) %}
+        {%  if (not (i == selected_language)) %}
         <input type="radio" name="lang_code" value="{{languages[i]['lang_code']}}"> {{languages[i]['name']}}<br>
         {% endif %}
         {% endfor %}
