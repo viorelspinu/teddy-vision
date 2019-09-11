@@ -1,6 +1,6 @@
 import simplejson as json
 
-from cloud_service import CloudService
+
 
 
 class ConfigurationService:
