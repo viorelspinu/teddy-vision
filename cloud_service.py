@@ -75,7 +75,7 @@ class CloudService:
     def do_text_to_speech_post(self, text, language_code, voice_code, ssml=False):
         text_tag = "text"
         if (ssml):
-            text_tag="ssml"
+            text_tag = "ssml"
         json_data = {
             "input": {text_tag: text.encode('utf-8')},
             "voice": {
@@ -108,7 +108,6 @@ class CloudService:
         data = "I have seen "
         for item in rows:
             data = data + str(item['description']) + ","
-        
 
         translate_language_code = self.TRANSLATE_LANGUAGE_CODE_ENGLISH
         tts_voice_code = self.TTS_VOICE_CODE_ENGLISH
