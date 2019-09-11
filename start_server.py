@@ -5,7 +5,7 @@ from flask import request, redirect, url_for
 
 from cloud_service import CloudService
 from configuration_service import ConfigurationService
-import voice_codes_constants
+from voice_codes_constants import *
 
 cloud_service = CloudService()
 configuration_service = ConfigurationService()
