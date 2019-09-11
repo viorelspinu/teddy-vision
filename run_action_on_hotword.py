@@ -6,6 +6,7 @@ from cloud_service import CloudService
 from rgb_led_service import RGBLedService
 from time import sleep
 
+
 class RunActionOnHotword:
 
     def __init__(self):
@@ -22,30 +23,17 @@ class RunActionOnHotword:
         if ("explore" == hotword):
             vision_service = VisionService()
             vision_service.do_vision()
-            
+
            #os.system("cp --backup ./vision_out.wav ./audio-logs/")
 
         if ("french" == hotword):
-            configuration_data = self.configuration_service.read_configuration()
-            configuration_data['language'] = CloudService.TTS_LANGUAGE_CODE_FRENCH
-            self.configuration_service.write_configuration(configuration_data)
-            os.system("aplay ./wav/french.wav")
-            print("will use french")
+            self.configuration_service.set_vision_language(CloudService.TTS_LANGUAGE_CODE_FRENCH)
 
         if ("english" == hotword):
-            configuration_data = self.configuration_service.read_configuration()
-            configuration_data['language'] = CloudService.TTS_LANGUAGE_CODE_ENGLISH
-            self.configuration_service.write_configuration(configuration_data)
-            os.system("aplay ./wav/english.wav")
-            print("will use english")
+            self.configuration_service.set_vision_language(CloudService.TTS_LANGUAGE_CODE_ENGLISH)
 
-        
         if ("german" == hotword):
-            configuration_data = self.configuration_service.read_configuration()
-            configuration_data['language'] = CloudService.TTS_LANGUAGE_CODE_GERMAN
-            self.configuration_service.write_configuration(configuration_data)
-            os.system("aplay ./wav/german.wav")
-            print("will use german")            
+            self.configuration_service.set_vision_language(CloudService.TTS_LANGUAGE_CODE_GERMAN)
 
         if ("shutdown" == hotword):
             os.system("aplay ./wav/shutdown_response.wav")
