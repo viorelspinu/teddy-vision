@@ -12,7 +12,7 @@
         <textarea name="text_to_speak" cols="100" rows="10"></textarea>
         <br>
         {% for i in range(languages | length): %}
-        {%  if (i == 0) %}
+        {%  if (i == selected_language) %}
         <input checked="true" type="radio" name="lang_code" value="{{languages[i]['lang_code']}}"> {{languages[i]['name']}}<br>
         {% endif %}
         {%  if (i > 0) %}
