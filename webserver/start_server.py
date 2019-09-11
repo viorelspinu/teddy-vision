@@ -35,12 +35,12 @@ def get_lang_codes():
     return [lang_en, lang_fr, lang_de]
 
 
-lang_codes = get_lang_codes()
+languages = get_lang_codes()
 
 
 def get_lang(lang_code):
     print(lang_code)
-    for lang in lang_codes:
+    for lang in languages:
         print(lang)
         if (lang['lang_code'] == lang_code):
             return lang
@@ -48,7 +48,7 @@ def get_lang(lang_code):
 
 @app.route('/')
 def hello_world():
-    return render_template('home.html', lang_codes=lang_codes)
+    return render_template('home.html', lang_codes=languages)
 
 
 @app.route('/speak', methods=['POST'])
@@ -66,7 +66,7 @@ def speak():
     os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
     os.system("aplay ./out.wav")
 
-    return render_template('home.html', lang_codes=lang_codes)
+    return render_template('home.html', lang_codes=languages)
 
 
 if __name__ == "__main__":

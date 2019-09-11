@@ -11,8 +11,8 @@
     <form action="{{ url_for('speak') }}" method="post">
         <textarea name="text_to_speak" cols="100" rows="10"></textarea>
         <br>
-        {% for lang_code in lang_codes %}
-            <input type="radio" name="lang_code" value="{{lang_code['code']}}"> {{lang_code['name']}}<br>
+        {% for lang in languages %}
+            <input type="radio" name="lang_code" value="{{lang_code['lang_code']}}"> {{lang_code['name']}}<br>
         {% endfor %}
         <br><br>
         <input type="submit" value="Speak">
