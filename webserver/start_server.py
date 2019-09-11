@@ -1,5 +1,4 @@
 
-
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -7,14 +6,14 @@ from flask import request
 import sys
 import os
 sys.path.append('./..')
+
+
 from cloud_service import CloudService
 
 cloud_service = CloudService()
 
 
 app = Flask(__name__)
-
-lang_codes = get_lang_codes()
 
 
 def get_lang_codes():
@@ -34,6 +33,9 @@ def get_lang_codes():
     lang_de['name'] = "German"
 
     return [lang_en, lang_fr, lang_de]
+
+
+lang_codes = get_lang_codes()
 
 
 def get_lang(lang_code):
