@@ -6,8 +6,6 @@ import simplejson as json
 
 class VisionEventsLogger:
 
-    
-
     def main(self):
         while (True):
             distance = SonarService.getInstance().measure()
@@ -28,6 +26,7 @@ class VisionEventsLogger:
                 print(data)
                 with open("guru99.txt", "a+") as f:
                     f.write(data + "\r\n")
+                    f.close()
 
 
 vision_logger = VisionEventsLogger()
