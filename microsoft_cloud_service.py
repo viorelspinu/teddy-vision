@@ -70,10 +70,3 @@ class MicrosoftCloudService():
             print("\nAvailable voices: \n" + response.text)
         else:
             print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
-
-
-if __name__ == "__main__":
-    app = TextToSpeech(subscription_key)
-    app.speak("salut, imi place cum iti sta azi !")
-    # Get a list of voices https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#get-a-list-of-voices
-    # app.get_voices_list()
