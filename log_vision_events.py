@@ -25,10 +25,10 @@ class VisionEventsLogger:
                     data = data + str(item['description']) + ","
                 print(data)
 
-                with open("vision_log.txt", "a") as f:
-                    #f.write(data + "\r\n")
-                    f.write(data)
-                    f.close()
+                with open("vision_log.txt", "a") as myfile:
+                    # f.write(data + "\r\n")
+                    myfile.write("appended text")
+                    myfile.close()
                     print("writing data")
 
 
