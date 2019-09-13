@@ -65,11 +65,8 @@ def speak():
     selected_lang = get_lang_index(lang_code)
     lang = languages[selected_lang]
     input_text = text
-    mp3_base64 = cloud_service.do_text_to_speech_post(input_text, lang['lang_code'], lang['voice_code'])
-    cloud_service.decode_text_to_file_as_base64(mp3_base64, "out.mp3")
-    os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
-    os.system("aplay ./out.wav")
-
+    cloud_service.speak(input_text, lang['lang_code'], lang['voice_code'])
+    
     return redirect('/')
 
 
