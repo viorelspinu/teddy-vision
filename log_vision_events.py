@@ -6,11 +6,13 @@ import simplejson as json
 
 class VisionEventsLogger:
 
+    
+
     def main(self):
         while (True):
             distance = SonarService.getInstance().measure()
             if (distance < 220):
-                camera_service = CameraService()
+                camera_service = CameraService.getInstance()
                 cloud_service = CloudService()
                 camera_service.take_photo("photo.jpg")
                 vision_response = cloud_service.do_vision_post("photo.jpg")
