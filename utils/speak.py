@@ -8,7 +8,7 @@ from voice_codes_constants import *
 
 cloud_service = CloudService()
 input_text = sys.argv[1]
-input_lang = sys.argv[1]
+input_lang = sys.argv[2]
 tts_lang_code = TTS_LANGUAGE_CODE_ENGLISH
 tts_voice_code = TTS_VOICE_CODE_ENGLISH
 
