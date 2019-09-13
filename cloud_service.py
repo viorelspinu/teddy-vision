@@ -54,7 +54,7 @@ class CloudService:
             if (TTS_LANGUAGE_CODE_GERMAN == language_code):
                 voice_code = TTS_VOICE_CODE_GERMAN
             if (TTS_MICROSOFT_LANGUAGE_CODE_RO == language_code):
-                voice_code = TTS_MICROSOFT_LANGUAGE_CODE_RO
+                voice_code = TTS_MICROSOFT_VOICE_CODE_RO
 
         if (TTS_MICROSOFT_LANGUAGE_CODE_RO == language_code):
             cloud_service = MicrosoftCloudService()
