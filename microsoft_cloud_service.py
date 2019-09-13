@@ -66,6 +66,6 @@ class TextToSpeech(object):
 if __name__ == "__main__":
     app = TextToSpeech(subscription_key)
     app.get_token()
-    app.speak("123")
+    app.speak("salut, imi place cum iti sta azi !")
     # Get a list of voices https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#get-a-list-of-voices
     # app.get_voices_list()
