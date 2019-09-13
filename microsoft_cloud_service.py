@@ -29,6 +29,8 @@ class MicrosoftCloudService():
         self.access_token = str(response.text)
 
     def speak(self, text, lang_code, voice_code):
+        self.get_token()
+
         base_url = 'https://westus.tts.speech.microsoft.com/'
         path = 'cognitiveservices/v1'
         constructed_url = base_url + path
@@ -71,7 +73,6 @@ class MicrosoftCloudService():
 
 if __name__ == "__main__":
     app = TextToSpeech(subscription_key)
-    app.get_token()
     app.speak("salut, imi place cum iti sta azi !")
     # Get a list of voices https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#get-a-list-of-voices
     # app.get_voices_list()
