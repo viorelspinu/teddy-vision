@@ -6,3 +6,7 @@ class VisionEventsLogger:
         while (True):
             distance = SonarService.getInstance().measure()
             print(distance)
+
+
+vision_logger = VisionEventsLogger()
+vision_logger.main()
