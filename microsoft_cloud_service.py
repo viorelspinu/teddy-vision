@@ -51,11 +51,12 @@ class MicrosoftCloudService():
         response = requests.post(constructed_url, headers=headers, data=body)
 
         if response.status_code == 200:
-            with open('sample-' + self.timestr + '.wav', 'wb') as audio:
-                audio.write(response.content)
-                print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
+            with open('out.wav', 'wb') as audio:
+                audio.write(response.content)                
         else:
             print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
+
+        os.system("aplay ./out.wav")
 
     def get_voices_list(self):
         base_url = 'https://westus.tts.speech.microsoft.com/'
