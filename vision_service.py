@@ -21,7 +21,7 @@ class VisionService:
         SoundService.getInstance().play("./wav/done_have_to_think.wav")
         labels = cloud_processor.process_photo("photo.jpg")
 
-        vision_language_code = ConfigurationService.getInstance().read_configuration['language']
+        vision_language_code = ConfigurationService.getInstance().read_configuration()['language']
 
         if (not (TTS_LANGUAGE_CODE_ENGLISH == vision_language_code)):
             labels = cloud_processor.translate(labels, vision_language_code)
