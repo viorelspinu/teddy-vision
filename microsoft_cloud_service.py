@@ -7,9 +7,9 @@ from voice_codes_constants import *
 
 
 class MicrosoftCloudService():
-    
+
     def __init__(self):
-        
+
         if 'SPEECH_SERVICE_KEY' in os.environ:
             subscription_key = os.environ['SPEECH_SERVICE_KEY']
         else:
@@ -52,11 +52,11 @@ class MicrosoftCloudService():
 
         if response.status_code == 200:
             with open('out.wav', 'wb') as audio:
-                audio.write(response.content)                
+                audio.write(response.content)
         else:
             print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
 
-        os.system("aplay ./out.wav")
+        return "out.wav"
 
     def get_voices_list(self):
         base_url = 'https://westus.tts.speech.microsoft.com/'

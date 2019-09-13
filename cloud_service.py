@@ -61,4 +61,6 @@ class CloudService:
         else:
             cloud_service = GoogleCloudService()
 
-        cloud_service.speak(input_text, language_code, voice_code, ssml)
+        wav_file_path = cloud_service.speak(input_text, language_code, voice_code, ssml)
+        os.system("aplay " + wav_file_path)
+
