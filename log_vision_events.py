@@ -24,7 +24,7 @@ class VisionEventsLogger:
                 for item in rows:
                     data = data + str(item['description']) + ","
                 print(data)
-                with open("guru99.txt", "a+") as f:
+                with open("./vision_log.txt", "a+") as f:
                     f.write(data + "\r\n")
                     f.close()
 
