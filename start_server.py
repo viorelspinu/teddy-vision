@@ -29,6 +29,11 @@ def get_lang_codes():
     lang_de['voice_code'] = TTS_VOICE_CODE_GERMAN
     lang_de['name'] = "German"
 
+    lang_ro = {}
+    lang_ro['lang_code'] = TTS_MICROSOFT_LANGUAGE_CODE_RO
+    lang_ro['voice_code'] = TTS_MICROSOFT_VOICE_CODE_RO
+    lang_ro['name'] = "Romanian"
+
     return [lang_en, lang_fr, lang_de]
 
 

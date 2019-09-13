@@ -92,7 +92,7 @@ class GoogleCloudService:
         os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
         os.system("aplay ./out.wav")
 
-    def process_photo(self, photo_file, mp3_out_file):
+    def process_photo(self, photo_file):
         vision_response = self.do_vision_post(photo_file)
         json_vision_response = json.loads(vision_response)
         try:
@@ -104,26 +104,4 @@ class GoogleCloudService:
         for item in rows:
             data = data + str(item['description']) + ","
 
-        translate_language_code = TRANSLATE_LANGUAGE_CODE_ENGLISH
-        tts_voice_code = TTS_VOICE_CODE_ENGLISH
-        tts_language_code = TTS_LANGUAGE_CODE_ENGLISH
-
-        if (TTS_LANGUAGE_CODE_FRENCH == self.configuration_service.read_configuration()['language']):
-            translate_language_code = TRANSLATE_LANGUAGE_CODE_FRENCH
-            tts_voice_code = TTS_VOICE_CODE_FRENCH
-            tts_language_code = TTS_LANGUAGE_CODE_FRENCH
-
-        if (TTS_LANGUAGE_CODE_GERMAN == self.configuration_service.read_configuration()['language']):
-            translate_language_code = TRANSLATE_LANGUAGE_CODE_GERMAN
-            tts_voice_code = TTS_VOICE_CODE_GERMAN
-            tts_language_code = TTS_LANGUAGE_CODE_GERMAN
-
-        data_translated = self.do_translate_post(data, translate_language_code).decode('utf-8')
-        html_parser = HTMLParser()
-        data_translated = html_parser.unescape(data_translated)
-
-        # print(data_translated)
-
-        mp3_base64 = self.do_text_to_speech_post(data_translated, tts_language_code, tts_voice_code)
-
-        self.decode_text_to_file_as_base64(mp3_base64, mp3_out_file)
+        return data
