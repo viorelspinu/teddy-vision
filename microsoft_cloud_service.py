@@ -6,15 +6,16 @@ from xml.etree import ElementTree
 from voice_codes_constants import *
 
 
-if 'SPEECH_SERVICE_KEY' in os.environ:
-    subscription_key = os.environ['SPEECH_SERVICE_KEY']
-else:
-    print('Environment variable for your subscription key is not set.')
-    exit()
-
-
-class TextToSpeech(object):
+class MicrosoftCloudService(object):
+    
     def __init__(self, subscription_key):
+        
+        if 'SPEECH_SERVICE_KEY' in os.environ:
+            subscription_key = os.environ['SPEECH_SERVICE_KEY']
+        else:
+            print('Environment variable for your subscription key is not set.')
+            exit()
+
         self.subscription_key = subscription_key
         self.timestr = time.strftime("%Y%m%d-%H%M")
         self.access_token = None
