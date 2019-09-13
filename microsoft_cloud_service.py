@@ -28,7 +28,7 @@ class MicrosoftCloudService():
         response = requests.post(fetch_token_url, headers=headers)
         self.access_token = str(response.text)
 
-    def speak(self, text):
+    def speak(self, text, lang_code, voice_code):
         base_url = 'https://westus.tts.speech.microsoft.com/'
         path = 'cognitiveservices/v1'
         constructed_url = base_url + path
@@ -39,10 +39,10 @@ class MicrosoftCloudService():
             'User-Agent': 'YOUR_RESOURCE_NAME'
         }
         xml_body = ElementTree.Element('speak', version='1.0')
-        xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', TTS_MICROSOFT_LANGUAGE_CODE_RO)
+        xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', lang_code)
         voice = ElementTree.SubElement(xml_body, 'voice')
-        voice.set('{http://www.w3.org/XML/1998/namespace}lang', TTS_MICROSOFT_LANGUAGE_CODE_RO)
-        voice.set('name', TTS_MICROSOFT_VOICE_CODE_RO)
+        voice.set('{http://www.w3.org/XML/1998/namespace}lang', lang_code)
+        voice.set('name', voice_code)
         voice.text = text
         body = ElementTree.tostring(xml_body)
 
