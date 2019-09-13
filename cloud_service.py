@@ -46,6 +46,7 @@ class CloudService:
 
     def speak(self, input_text, language_code, voice_code=False, ssml=False):
         cloud_service = None
+        
         if (False == voice_code):
             if (TTS_LANGUAGE_CODE_ENGLISH == language_code):
                 voice_code = TTS_VOICE_CODE_ENGLISH

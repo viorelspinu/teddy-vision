@@ -54,7 +54,7 @@ class MicrosoftCloudService():
             with open('out.wav', 'wb') as audio:
                 audio.write(response.content)
         else:
-            print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
+            print("\n " + str(response) + "\n\n\n\nSomething went wrong. Check your subscription key and headers.\n")
 
         return "out.wav"
 
