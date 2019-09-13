@@ -9,7 +9,7 @@ class VisionEventsLogger:
     def main(self):
         while (True):
             distance = SonarService.getInstance().measure()
-            if (distance < 250):
+            if (distance < 220):
                 camera_service = CameraService()
                 cloud_processor = CloudService()
                 camera_service.take_photo("photo.jpg")
@@ -23,7 +23,7 @@ class VisionEventsLogger:
                 data = ""
                 for item in rows:
                     data = data + str(item['description']) + ","
-                print (data)
+                print(data)
 
 
 vision_logger = VisionEventsLogger()
