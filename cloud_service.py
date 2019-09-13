@@ -21,3 +21,7 @@ class CloudService:
     def process_photo(self, photo_file, mp3_out_file):
         google_cloud_service = GoogleCloudService()
         return google_cloud_service.process_photo(photo_file, mp3_out_file)
+
+    def speak(self, input_text, language_code, voice_code):
+        google_cloud_service = GoogleCloudService()
+        google_cloud_service.speak(input_text, language_code, voice_code)

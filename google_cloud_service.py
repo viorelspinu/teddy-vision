@@ -86,6 +86,12 @@ class GoogleCloudService:
 
         return r_text
 
+    def speak(self, input_text, language_code, voice_code):
+        mp3_base64 = self.do_text_to_speech_post(input_text, language_code, voice_code)
+        self.decode_text_to_file_as_base64(mp3_base64, "out.mp3")
+        os.system("ffmpeg -i ./out.mp3 out.wav -y > /dev/null 2>&1 < /dev/null")
+        os.system("aplay ./out.wav")
+
     def process_photo(self, photo_file, mp3_out_file):
         vision_response = self.do_vision_post(photo_file)
         json_vision_response = json.loads(vision_response)
