@@ -36,7 +36,7 @@ class CloudService:
             translate_language_code = TRANSLATE_LANGUAGE_CODE_GERMAN
 
         if (TTS_MICROSOFT_LANGUAGE_CODE_RO == target_language):
-            translate_language_code = TRANSLATE_LANGUAGE_CODE_GERMAN
+            translate_language_code = TRANSLATE_LANGUAGE_CODE_ROMANIAN
 
         data_translated = cloud_service.do_translate_post(text, translate_language_code).decode('utf-8')
         html_parser = HTMLParser()
