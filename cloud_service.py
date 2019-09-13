@@ -6,9 +6,6 @@ from HTMLParser import HTMLParser
 
 class CloudService:
 
-    def __init__(self):
-        print("init")
-
     def do_vision_post(self, image_path):
         google_cloud_service = GoogleCloudService()
         return google_cloud_service.do_vision_post(image_path)
