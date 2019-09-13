@@ -1,5 +1,7 @@
 
-import os, requests, time
+import os
+import requests
+import time
 from xml.etree import ElementTree
 from voice_codes_constants import *
 
@@ -10,9 +12,10 @@ else:
     print('Environment variable for your subscription key is not set.')
     exit()
 
+
 class TextToSpeech(object):
     def __init__(self, subscription_key):
-        self.subscription_key = subscription_key        
+        self.subscription_key = subscription_key
         self.timestr = time.strftime("%Y%m%d-%H%M")
         self.access_token = None
 
@@ -63,6 +66,7 @@ class TextToSpeech(object):
             print("\nAvailable voices: \n" + response.text)
         else:
             print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
+
 
 if __name__ == "__main__":
     app = TextToSpeech(subscription_key)
