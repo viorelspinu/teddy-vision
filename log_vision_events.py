@@ -11,9 +11,9 @@ class VisionEventsLogger:
             distance = SonarService.getInstance().measure()
             if (distance < 220):
                 camera_service = CameraService()
-                cloud_processor = CloudService()
+                cloud_service = CloudService()
                 camera_service.take_photo("photo.jpg")
-                vision_response = self.do_vision_post("photo.jpg")
+                vision_response = cloud_service.do_vision_post("photo.jpg")
                 json_vision_response = json.loads(vision_response)
                 try:
                     rows = json_vision_response['responses'][0]['labelAnnotations']
