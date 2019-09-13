@@ -2,7 +2,7 @@ from google_cloud_service import GoogleCloudService
 from microsoft_cloud_service import MicrosoftCloudService
 from voice_codes_constants import *
 from HTMLParser import HTMLParser
-
+import os
 
 class CloudService:
 
@@ -63,4 +63,3 @@ class CloudService:
 
         wav_file_path = cloud_service.speak(input_text, language_code, voice_code, ssml)
         os.system("aplay " + wav_file_path)
-
