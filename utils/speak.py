@@ -1,9 +1,10 @@
-from voice_codes_constants import *
-from cloud_service import CloudService
+
 import sys
 import os
 sys.path.append('./..')
 
+from cloud_service import CloudService
+from voice_codes_constants import *
 
 cloud_service = CloudService()
 input_text = sys.argv[1]
