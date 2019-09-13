@@ -24,11 +24,11 @@ class CloudService:
         google_cloud_service = GoogleCloudService()
         return google_cloud_service.process_photo(photo_file, mp3_out_file)
 
-    def speak(self, input_text, language_code, voice_code):
+    def speak(self, input_text, language_code, voice_code, ssml=False):
         cloud_service = None
         if (TTS_MICROSOFT_LANGUAGE_CODE_RO == language_code):
             cloud_service = MicrosoftCloudService()
         else:
             cloud_service = GoogleCloudService()
 
-        cloud_service.speak(input_text, language_code, voice_code)
+        cloud_service.speak(input_text, language_code, voice_code, ssml)

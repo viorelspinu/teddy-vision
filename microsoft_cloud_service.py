@@ -28,7 +28,7 @@ class MicrosoftCloudService():
         response = requests.post(fetch_token_url, headers=headers)
         self.access_token = str(response.text)
 
-    def speak(self, text, lang_code, voice_code):
+    def speak(self, text, lang_code, voice_code, ssml=False):
         self.get_token()
 
         base_url = 'https://westus.tts.speech.microsoft.com/'
