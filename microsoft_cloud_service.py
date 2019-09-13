@@ -6,9 +6,9 @@ from xml.etree import ElementTree
 from voice_codes_constants import *
 
 
-class MicrosoftCloudService(object):
+class MicrosoftCloudService():
     
-    def __init__(self, subscription_key):
+    def __init__(self):
         
         if 'SPEECH_SERVICE_KEY' in os.environ:
             subscription_key = os.environ['SPEECH_SERVICE_KEY']

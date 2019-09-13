@@ -42,8 +42,6 @@ class ConfigurationService:
     def validate(self):
         try:
             data = self.read_configuration()
-            print(data['language'])
-            print(data)
         except Exception as e:
             print(e)
             print("configuration file not there, creating.")
