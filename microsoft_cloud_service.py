@@ -1,6 +1,7 @@
 
 import os, requests, time
 from xml.etree import ElementTree
+from voice_codes_constants import *
 
 
 if 'SPEECH_SERVICE_KEY' in os.environ:
@@ -34,10 +35,10 @@ class TextToSpeech(object):
             'User-Agent': 'YOUR_RESOURCE_NAME'
         }
         xml_body = ElementTree.Element('speak', version='1.0')
-        xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', 'ro-RO')
+        xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', TTS_MICROSOFT_LANGUAGE_CODE_RO)
         voice = ElementTree.SubElement(xml_body, 'voice')
-        voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'ro-RO')
-        voice.set('name', 'ro-RO-Andrei') # Short name for 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)'
+        voice.set('{http://www.w3.org/XML/1998/namespace}lang', TTS_MICROSOFT_LANGUAGE_CODE_RO)
+        voice.set('name', TTS_MICROSOFT_VOICE_CODE_RO)
         voice.text = text
         body = ElementTree.tostring(xml_body)
 
