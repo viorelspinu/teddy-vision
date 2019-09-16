@@ -64,5 +64,5 @@ class CloudService:
             cloud_service = GoogleCloudService()
 
         wav_file_path = cloud_service.speak(input_text, language_code, voice_code, ssml)
-        os.system('ffmpeg -i ' + wav_file_path + ' -filter:a "volume=7dB" out_loud.wav -y > /dev/null 2>&1 < /dev/null')
-        os.system("aplay out_loud.wav")
+        #os.system('ffmpeg -i ' + wav_file_path + ' -filter:a "volume=7dB" out_loud.wav -y > /dev/null 2>&1 < /dev/null')
+        os.system("aplay " + wav_file_path)
