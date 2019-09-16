@@ -48,6 +48,8 @@ class MicrosoftCloudService():
 
     def get_token(self):
         token = self.read_cached_token()
+        print("cached token is :")
+        print(token)
         if (token is None):
             token = self.create_token()
         self.access_token = token
