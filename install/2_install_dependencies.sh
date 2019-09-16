@@ -12,3 +12,4 @@ sudo apt-get -yq install  python-flask
 sudo pip install  lomond --user
 pip install  lomond --user
 pip install pyaudio --user
+sudo pip install pyaudio --user
