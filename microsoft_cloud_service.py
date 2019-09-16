@@ -8,6 +8,8 @@ from voice_codes_constants import *
 
 class MicrosoftCloudService():
 
+    __TOKEN_FILE = "microsoft_cached_token.json"
+
     def __init__(self):
 
         if 'SPEECH_SERVICE_KEY' in os.environ:
@@ -20,13 +22,35 @@ class MicrosoftCloudService():
         self.timestr = time.strftime("%Y%m%d-%H%M")
         self.access_token = None
 
-    def get_token(self):
+    def read_cached_token(self):
+        ret = None
+        try:
+            with open(self.__TOKEN_FILE, "r") as f:
+                ret = json.load(f)
+            return ret
+        except Exception as e:
+            return None
+
+    def save_cached_token(self, token):
+        data = {"token": token, "time": time.time()}
+        with open(self.__TOKEN_FILE, "w") as f:
+            json.dump(data, f)
+
+    def create_token(self):
         fetch_token_url = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
         headers = {
             'Ocp-Apim-Subscription-Key': self.subscription_key
         }
         response = requests.post(fetch_token_url, headers=headers)
-        self.access_token = str(response.text)
+        access_token = str(response.text)
+        self.save_cached_token(access_token)
+        return access_token
+
+    def get_token(self):
+        token = self.read_cached_token()
+        if (token is None):
+            token = self.create_token()
+        self.access_token = token
 
     def speak(self, text, lang_code, voice_code, ssml=False):
         self.get_token()
