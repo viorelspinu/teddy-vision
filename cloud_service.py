@@ -4,6 +4,7 @@ from voice_codes_constants import *
 from HTMLParser import HTMLParser
 import os
 
+
 class CloudService:
 
     def do_vision_post(self, image_path):
@@ -46,7 +47,7 @@ class CloudService:
 
     def speak(self, input_text, language_code, voice_code=False, ssml=False):
         cloud_service = None
-        
+
         if (False == voice_code):
             if (TTS_LANGUAGE_CODE_ENGLISH == language_code):
                 voice_code = TTS_VOICE_CODE_ENGLISH
@@ -63,4 +64,5 @@ class CloudService:
             cloud_service = GoogleCloudService()
 
         wav_file_path = cloud_service.speak(input_text, language_code, voice_code, ssml)
-        os.system("aplay " + wav_file_path)
+        os.system('ffmpeg -i ' + wav_file_path + ' -filter:a "volume=7dB" out_loud.wav -y > /dev/null 2>&1 < /dev/null')
+        os.system("aplay out_loud.wav")
