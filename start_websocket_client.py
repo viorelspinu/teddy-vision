@@ -2,7 +2,7 @@ from lomond import WebSocket
 from cloud_service import CloudService
 from voice_codes_constants import *
 
-websocket = WebSocket('http://116.203.129.161:8080/chat')
+websocket = WebSocket('http://116.203.129.161:80/chat')
 cloud_service = CloudService()
 
 for event in websocket:
