@@ -33,7 +33,7 @@ class MicrosoftCloudService():
             if ((time.time() - ret['time']) > self.__TOKEN_EXPIRATION_PERIOD_SECONDS):
                 print("token expired")
                 return None
-            return ret
+            return ret['token']
         except IOError as e:
             print(e)
             return None
