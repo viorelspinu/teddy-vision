@@ -4,7 +4,7 @@ import requests
 import time
 from xml.etree import ElementTree
 from voice_codes_constants import *
-
+import simplejson as json
 
 class MicrosoftCloudService():
 
