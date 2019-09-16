@@ -30,11 +30,9 @@ class MicrosoftCloudService():
             with open(self.__TOKEN_FILE, "r") as f:
                 ret = json.load(f)
             if ((time.time() - ret['time']) > self.__TOKEN_EXPIRATION_PERIOD_SECONDS):
-                print("token expired")
                 return None
             return ret['token']
         except IOError as e:
-            print(e)
             return None
 
     def save_cached_token(self, token):
@@ -54,8 +52,6 @@ class MicrosoftCloudService():
 
     def get_token(self):
         token = self.read_cached_token()
-        print("cached token is :")
-        print(token)
         if (token is None):
             token = self.create_token()
         self.access_token = token
