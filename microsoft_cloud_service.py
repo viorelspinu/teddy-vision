@@ -6,9 +6,12 @@ from xml.etree import ElementTree
 from voice_codes_constants import *
 import simplejson as json
 
+
 class MicrosoftCloudService():
 
     __TOKEN_FILE = "microsoft_cached_token.json"
+    #__TOKEN_EXPIRATION_PERIOD_SECONDS = 9 * 60
+    __TOKEN_EXPIRATION_PERIOD_SECONDS = 15
 
     def __init__(self):
 
@@ -27,6 +30,8 @@ class MicrosoftCloudService():
         try:
             with open(self.__TOKEN_FILE, "r") as f:
                 ret = json.load(f)
+            if ((time.time() - ret.time) > __TOKEN_EXPIRATION_PERIOD_SECONDS):
+                return None
             return ret
         except Exception as e:
             return None
