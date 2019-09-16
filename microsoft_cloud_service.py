@@ -34,7 +34,7 @@ class MicrosoftCloudService():
                 print("token expired")
                 return None
             return ret
-        except Exception as e:
+        except FileNotFoundError as e:
             print(e)
             return None
 
