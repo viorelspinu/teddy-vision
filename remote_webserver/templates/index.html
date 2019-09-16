@@ -98,6 +98,7 @@
       };
 
       websocket.onclose = function () {
+        window.location.reload();
         log('Closed');
       };
 
