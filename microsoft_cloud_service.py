@@ -35,6 +35,7 @@ class MicrosoftCloudService():
                 return None
             return ret
         except Exception as e:
+            print(e)
             return None
 
     def save_cached_token(self, token):
