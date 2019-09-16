@@ -21,6 +21,8 @@ python ./configuration_service.py
 python ./say_ip_address.py
 python ./start_server.py &
 
+./start_websocket_client.sh &
+
 while true
 do
 python ./wait_for_trigger.py

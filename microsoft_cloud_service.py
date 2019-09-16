@@ -11,7 +11,6 @@ class MicrosoftCloudService():
 
     __TOKEN_FILE = "microsoft_cached_token.json"
     __TOKEN_EXPIRATION_PERIOD_SECONDS = 9 * 60
-    
 
     def __init__(self):
 
