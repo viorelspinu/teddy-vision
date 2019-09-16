@@ -30,7 +30,7 @@ class MicrosoftCloudService():
         try:
             with open(self.__TOKEN_FILE, "r") as f:
                 ret = json.load(f)
-            if ((time.time() - ret.time) > __TOKEN_EXPIRATION_PERIOD_SECONDS):
+            if ((time.time() - ret['time']) > __TOKEN_EXPIRATION_PERIOD_SECONDS):
                 print("token expired")
                 return None
             return ret
