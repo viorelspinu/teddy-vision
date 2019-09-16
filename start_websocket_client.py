@@ -13,3 +13,6 @@ for event in persist(websocket):
         print(event.text)
         parts = event.text.split("_#_#_")
         cloud_service.speak(parts[1], parts[0])
+        with open("remote_speech_log.txt", "a") as myfile:
+            myfile.write(event.text + "\r\n")
+            myfile.close()
