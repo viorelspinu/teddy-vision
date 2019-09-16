@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PYTHONIOENCODING=UTF-8
+
 cd /home/pi/teddy-vision
 export PATH=$PATH:/home/pi/.local/bin 
 

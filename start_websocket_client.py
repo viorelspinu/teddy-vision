@@ -10,5 +10,6 @@ for event in persist(websocket):
     if event.name == "ready":
         print("ready")
     elif event.name == "text":
+        print(event.text)
         parts = event.text.split("_#_#_")
         cloud_service.speak(parts[1], parts[0])
