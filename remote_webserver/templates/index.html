@@ -242,10 +242,16 @@
 
       websocket.onmessage = function (e) {
         var text = e.data;
-        if (text.startsWith("__REQUEST_RESPONSE__")){
-          alert(text);
+        if (text.startsWith("__REQUEST_RESPONSE__")) {
+          text = text.replace("__REQUEST_RESPONSE__", "");
+          json_data = JSON.parse(text);
+          $("#hello_teddy").slider().slider("setValue", json_data.sensitivities.hello);
+          $("#explore").slider().slider("setValue", json_data.sensitivities.explore);
+          $("#speak_english").slider().slider("setValue", json_data.sensitivities.english);
+          $("#speak_french").slider().slider("setValue", json_data.sensitivities.french);
+          $("#speak_german").slider().slider("setValue", json_data.sensitivities.german);
         }
-        
+
       };
 
       websocket.onerror = function (e) {
@@ -272,7 +278,7 @@
         websocket.send("__SENSITIVITY__" + sensitivity_json);
       });
 
-      
+
 
     });
       // [END gae_flex_websockets_js]
