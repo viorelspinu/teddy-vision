@@ -1,6 +1,6 @@
 {
     "language": "en-US",
-    "sensitivity": {
+    "sensitivities": {
         "hello": 5,
         "explore": 5,
         "speak_english": 5,
