@@ -35,7 +35,7 @@ class ConfigurationService:
 
     def set_sensitivities(self, sensitivities):
         configuration_data = self.read_configuration()
-        configuration_data.sensitivities = sensitivities
+        configuration_data['sensitivities'] = sensitivities
         self.write_configuration(configuration_data)
 
     def read_configuration(self):
