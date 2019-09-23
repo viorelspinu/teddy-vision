@@ -131,7 +131,7 @@ class WaitForTriggerService:
 
 
         sen_c = ConfigurationService.getInstance().read_configuration()['sensitivities']
-        sensitivity = [sen_c['hello'], sen_c['explore'], sen_c['speak_french'],sen_c['speak_english'], sen_c['speak_german']]
+        sensitivity = [sen_c['hello'], sen_c['explore'], sen_c['french'],sen_c['english'], sen_c['german']]
 
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity, audio_gain=1)
 
