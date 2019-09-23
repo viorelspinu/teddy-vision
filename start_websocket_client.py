@@ -11,7 +11,7 @@ for event in persist(websocket):
     if event.name == "ready":
         print("ready")
     elif event.name == "text":
-        text = event.text
+        text = str(event.text)
         print(text)
         if (text.startsWith("__SPEAK__")):
             text = text.replace("__SPEAK__", "")
