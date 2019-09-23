@@ -12,9 +12,8 @@ for event in persist(websocket):
         print("ready")
     elif event.name == "text":
         text = str(event.text)
-        print type(text)
         print(text)
-        if (text.startsWith("__SPEAK__")):
+        if (text.startswith("__SPEAK__")):
             text = text.replace("__SPEAK__", "")
             parts = text.split("_#_#_")
             cloud_service.speak(parts[1], parts[0])
@@ -24,6 +23,6 @@ for event in persist(websocket):
                 myfile.write(date_string + ": " + event.text + "\r\n")
                 myfile.close()
 
-        if (text.startsWith("__SENSITIVITY__")):
+        if (text.startswith("__SENSITIVITY__")):
             text = text.replace("__SENSITIVITY__", "")
             print(text)
