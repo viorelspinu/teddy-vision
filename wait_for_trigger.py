@@ -1,14 +1,15 @@
 
+from rgb_led_service import RGBLedService
+from sonar_service import SonarService
+from digital_sensor_distance_service import DigitalSensorDistanceService
+from local_communication_service import LocalCommunicationService as local_communication_service
+from configuration_service import ConfigurationService  
+import time
+import threading
+import os
+import snowboydecoder
 import sys
 sys.path.append('./snowboy')
-import snowboydecoder
-import os
-import threading
-import time
-from local_communication_service import LocalCommunicationService as local_communication_service
-from digital_sensor_distance_service import DigitalSensorDistanceService
-from sonar_service import SonarService
-from rgb_led_service import RGBLedService
 
 
 class WaitForTriggerService:
@@ -74,7 +75,7 @@ class WaitForTriggerService:
 
             if (active):
                 self.__digital_distance_active_counter = self.__digital_distance_active_counter + 1
-            else:                
+            else:
                 if (self.__digital_distance_active_counter > 10):
                     print("detected tedy by digital sensor")
                     self.detected_teddy()
@@ -82,13 +83,12 @@ class WaitForTriggerService:
 
             if (self.__digital_distance_active_counter > 300):
                 print("detected tedy by digital sensor")
-                self.detected_shutdown()            
+                self.detected_shutdown()
 
             if (self.__digital_distance_active_counter > 5):
                 RGBLedService.getInstance().set_color(1, 0, 1)
-            
-            time.sleep(0.01)
 
+            time.sleep(0.01)
 
     def watch_sonar(self):
         while (not self.__interrupted and not self.__will_stop):
@@ -126,11 +126,12 @@ class WaitForTriggerService:
         distance_thread.daemon = True
         distance_thread.start()
 
-
         models = ["./snowboy_models/listen.mdl", "./snowboy_models/explore.mdl", "./snowboy_models/french.mdl",
                   "./snowboy_models/english.mdl",  "./snowboy_models/german.mdl"]
 
-        sensitivity = [0.5, 0.5, 0.5, 0.5, 0.5]
+
+        sen_c = ConfigurationService.getInstance().read_configuration()['sensitivities']
+        sensitivity = [sen_c['hello'], sen_c['explore'], sen_c['speak_french'],sen_c['speak_english'], sen_c['speak_german']]
 
         self.detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity, audio_gain=1)
 
