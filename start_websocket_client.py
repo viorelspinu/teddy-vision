@@ -28,7 +28,10 @@ for event in persist(websocket):
 
         if (text.startswith("__SENSITIVITY__")):
             text = text.replace("__SENSITIVITY__", "")
-            json_sensitivity = json.loads(text)        
+            json_sensitivity = json.loads(text)
             configuration_service.set_sensitivities(json_sensitivity)
-            
-            
+
+        if (text.startswith("__REQUEST_CONFIGURATION__")):
+            text = text.replace("__REQUEST_CONFIGURATION__", "")
+            websocket.send_text(json.dumps(configuration_service.read_configuration()))
+
