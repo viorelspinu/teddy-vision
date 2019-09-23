@@ -11,11 +11,18 @@ for event in persist(websocket):
     if event.name == "ready":
         print("ready")
     elif event.name == "text":
-        print(event.text)
-        parts = event.text.split("_#_#_")
-        cloud_service.speak(parts[1], parts[0])
-        now = datetime.now()
-        date_string = now.strftime("%d/%m/%Y %H:%M:%S")
-        with open("remote_speech_log.txt", "a") as myfile:
-            myfile.write(date_string + ": " + event.text + "\r\n")
-            myfile.close()
+        text = event.text
+        print(text)
+        if (text.startsWith("__SPEAK__")):
+            text = text.replace("__SPEAK__", "")
+            parts = text.split("_#_#_")
+            cloud_service.speak(parts[1], parts[0])
+            now = datetime.now()
+            date_string = now.strftime("%d/%m/%Y %H:%M:%S")
+            with open("remote_speech_log.txt", "a") as myfile:
+                myfile.write(date_string + ": " + event.text + "\r\n")
+                myfile.close()
+
+        if (text.startsWith("__SENSITIVITY__")):
+            text = text.replace("__SENSITIVITY__", "")
+            print(text)

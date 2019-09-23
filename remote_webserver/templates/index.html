@@ -9,72 +9,209 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
   <title>Hello, world!</title>
+
+  <link rel="stylesheet" href="/static/bootstrap-slider.min.css">
+
+
 </head>
 
 <body>
-  <div class="container">
-    <div class="row mt-1">
-      <div class="col">
-        <div>
-          <div id="chat-status"></div>
-        </div>
+  <div class="container-fluid">
+    <div class="card mt-4">
+      <div class="card-header">
+        Speak now
       </div>
-    </div>
+      <div class="card-body">
 
-    <div class="row mt-2">
-      <div class="col">
-        <div class="form-group">
-
-          <form id="chat-form">
-
-            <textarea class="form-control mb-3" cols="40" rows="10" id="chat-text" placeholder="Enter some text..."></textarea>
-
-
-            <div class="container">
-
-              <div class="form-check form-check-inline">
-
-                <input class="form-check-input" type="radio" name="language" id="english_radio" value="en-US" checked>
-                <label class="form-check-label" for="english_radio">
-                  English
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="language" id="french_radio" value="fr-FR">
-                <label class="form-check-label" for="french_radio">
-                  French
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="language" id="romanian_radio" value="ro-RO">
-                <label class="form-check-label" for="romanian_radio">
-                  Romanian
-                </label>
-              </div>
+        <div class="row mt-1">
+          <div class="col">
+            <div>
+              <div id="chat-status"></div>
             </div>
+          </div>
         </div>
 
+        <div class="row mt-2">
+          <div class="col">
+            <div class="form-group">
 
-        <button class="btn btn-primary float-right" type="submit">Speak</button>
-        </form>
+              <form id="chat-form">
+
+                <textarea class="form-control mb-3" cols="40" rows="10" id="chat-text" placeholder="Enter some text..."></textarea>
+
+
+                <div class="container">
+
+                  <div class="form-check form-check-inline">
+
+                    <input class="form-check-input" type="radio" name="language" id="english_radio" value="en-US" checked>
+                    <label class="form-check-label" for="english_radio">
+                      English
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="language" id="french_radio" value="fr-FR">
+                    <label class="form-check-label" for="french_radio">
+                      French
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="language" id="romanian_radio" value="ro-RO">
+                    <label class="form-check-label" for="romanian_radio">
+                      Romanian
+                    </label>
+                  </div>
+                </div>
+            </div>
+
+
+            <button class="btn btn-primary float-right" type="submit">Speak</button>
+            </form>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="card mt-5">
+      <div class="card-header">
+        Hotword sensitivity
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col" style="white-space: nowrap;">
+            "Hello, Teddy"
+          </div>
+          <div class="col align-items-end">
+            <div class="float-right text-muted" style="white-space: nowrap;">
+              less sensitive
+            </div>
+          </div>
+          <div class="col">
+            <input style="width: 40vw" id="hello_teddy" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
+          </div>
+          <div class="col align-items-start text-muted" style="white-space: nowrap;">
+            very sensitive
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            "Explore !"
+          </div>
+          <div class="col align-items-end">
+            <div class="float-right text-muted" style="white-space: nowrap;">
+              less sensitive
+            </div>
+          </div>
+          <div class="col">
+            <input style="width: 40vw" id="explore" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
+          </div>
+          <div class="col align-items-start text-muted" style="white-space: nowrap;">
+            very sensitive
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="white-space: nowrap;">
+            "Speak English"
+          </div>
+          <div class="col align-items-end">
+            <div class="float-right text-muted" style="white-space: nowrap;">
+              less sensitive
+            </div>
+          </div>
+          <div class="col">
+            <input style="width: 40vw" id="speak_english" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
+          </div>
+          <div class="col align-items-start text-muted" style="white-space: nowrap;">
+            very sensitive
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="white-space: nowrap;" style="white-space: nowrap;">
+            "Speak French"
+          </div>
+          <div class="col align-items-end">
+            <div class="float-right text-muted" style="white-space: nowrap;">
+              less sensitive
+            </div>
+          </div>
+          <div class="col">
+            <input style="width: 40vw" id="speak_french" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
+          </div>
+          <div class="col align-items-start text-muted" style="white-space: nowrap;">
+            very sensitive
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="white-space: nowrap;">
+            "Speak German"
+          </div>
+          <div class="col align-items-end">
+            <div class="float-right text-muted" style="white-space: nowrap;">
+              less sensitive
+            </div>
+          </div>
+          <div class="col">
+            <input style="width: 40vw" id="speak_german" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
+          </div>
+          <div class="col align-items-start text-muted" style="white-space: nowrap;">
+            very sensitive
+          </div>
+        </div>
+
+        <button class="btn btn-primary float-right mt-3" id="saveSensitivities">Save</button>
+
+      </div>
+
     </div>
 
   </div>
 
-  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="/static/bootstrap-slider.min.js"></script>
 
 
   <script>
+
+
+
     $(function () {
+
+
+      $('#hello_teddy').slider({
+        formatter: function (value) {
+          return 'Current value: ' + value;
+        }
+      });
+      $('#explore').slider({
+        formatter: function (value) {
+          return 'Current value: ' + value;
+        }
+      });
+      $('#speak_english').slider({
+        formatter: function (value) {
+          return 'Current value: ' + value;
+        }
+      });
+      $('#speak_french').slider({
+        formatter: function (value) {
+          return 'Current value: ' + value;
+        }
+      });
+      $('#speak_german').slider({
+        formatter: function (value) {
+          return 'Current value: ' + value;
+        }
+      });
+
+
+
+
       var scheme = window.location.protocol == "https:" ? 'wss://' : 'ws://';
       var webSocketUri = scheme
         + window.location.hostname
@@ -116,8 +253,20 @@
         e.preventDefault();
         var data = textarea.val();
         var language = $('input[name=language]:checked', '#chat-form').val()
-        websocket.send(language + "_#_#_" + data);
+        websocket.send("__SPEAK__" + language + "_#_#_" + data);
       });
+
+      $("#saveSensitivities").click(function () {
+        var hello_teddy = $("#hello_teddy").slider().slider("getValue");
+        var explore = $("#explore").slider().slider("getValue");
+        var speak_english = $("#speak_english").slider().slider("getValue");
+        var speak_french = $("#speak_french").slider().slider("getValue");
+        var speak_german = $("#speak_german").slider().slider("getValue");
+        sensitivity = { "hello": hello_teddy, "explore": explore, "english": speak_english, "french": speak_french, "german": speak_german }
+        sensitivity_json = JSON.stringify(sensitivity);
+        websocket.send("__SENSITIVITY__" + sensitivity_json);
+      });
+
     });
       // [END gae_flex_websockets_js]
   </script>

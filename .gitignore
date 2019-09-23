@@ -6,3 +6,4 @@ configuration_service.pyc
 google_cloud_service.pyc
 voice_codes_constants.pyc
 google_appspotserver/main.pyc
+.DS_Store
