@@ -4,9 +4,11 @@ from cloud_service import CloudService
 from datetime import datetime
 from voice_codes_constants import *
 import simplejson as json
+from configuration_service import ConfigurationService
 
 websocket = WebSocket('http://116.203.129.161:80/chat')
 cloud_service = CloudService()
+configuration_service = ConfigurationService.getInstance()
 
 for event in persist(websocket):
     if event.name == "ready":
@@ -27,5 +29,5 @@ for event in persist(websocket):
         if (text.startswith("__SENSITIVITY__")):
             text = text.replace("__SENSITIVITY__", "")
             json_sensitivity = json.dumps(text)
-            print(json_sensitivity)
+            
             

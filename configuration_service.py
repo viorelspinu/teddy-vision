@@ -33,6 +33,11 @@ class ConfigurationService:
             os.system("aplay ./wav/german.wav")
             print("will use german")
 
+    def set_sensitivities(self, sensitivities):
+        configuration_data = self.read_configuration()
+        configuration_data.sensitivities = sensitivities
+        self.write_configuration(configuration_data)
+
     def read_configuration(self):
         ret = None
         with open(self.__CONFIGURATION_FILE, "r") as f:
