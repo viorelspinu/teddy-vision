@@ -33,5 +33,5 @@ for event in persist(websocket):
 
         if (text.startswith("__REQUEST_CONFIGURATION__")):
             text = text.replace("__REQUEST_CONFIGURATION__", "")
-            websocket.send_text(json.dumps(configuration_service.read_configuration()).decode('utf8'))
+            websocket.send_text("__REQUEST_RESPONSE__" + json.dumps(configuration_service.read_configuration()).decode('utf8'))
 

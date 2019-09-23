@@ -241,7 +241,11 @@
       };
 
       websocket.onmessage = function (e) {
-        alert(e.data);
+        var text = e.data;
+        if (text.startsWith("__REQUEST_RESPONSE__")){
+          alert(text);
+        }
+        
       };
 
       websocket.onerror = function (e) {
