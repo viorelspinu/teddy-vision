@@ -29,5 +29,6 @@ for event in persist(websocket):
         if (text.startswith("__SENSITIVITY__")):
             text = text.replace("__SENSITIVITY__", "")
             json_sensitivity = json.dumps(text)
+            configuration_service.set_sensitivities(json_sensitivity)
             
             
