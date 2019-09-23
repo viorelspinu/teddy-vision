@@ -50,7 +50,7 @@ class ConfigurationService:
         except Exception as e:
             print(e)
             print("configuration file not there, creating.")
-            data = {"language": "en"}
+            data = {"sensitivities": {"german": 5, "explore": 5, "hello": 5, "french": 5, "english": 5}, "language": "en-US"}
             self.write_configuration(data)
 
 
