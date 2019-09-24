@@ -3,8 +3,8 @@
     "sensitivities": {
         "hello": 5,
         "explore": 5,
-        "speak_english": 5,
-        "speak_french": 5,
-        "speak_german": 5
+        "english": 5,
+        "french": 5,
+        "german": 5
     }
 }
