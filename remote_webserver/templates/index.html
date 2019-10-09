@@ -78,98 +78,111 @@
         Hotword sensitivity
       </div>
       <div class="card-body">
-        <div class="row" >
-          <div class="col" >
+        <div class="row">
+          <div class="col">
             "Hello, Teddy"
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col align-items-end">
-            <div class="float-right text-muted" >
+            <div class="float-right text-muted">
               -
             </div>
           </div>
           <div class="col">
             <input style="width: 30vw" id="hello_teddy" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
           </div>
-          <div class="col align-items-start text-muted" >
+          <div class="col align-items-start text-muted">
             +
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col">
             "Explore !"
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col align-items-end">
-            <div class="float-right text-muted" >
+            <div class="float-right text-muted">
               -
             </div>
           </div>
           <div class="col">
             <input style="width: 30vw" id="explore" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
           </div>
-          <div class="col align-items-start text-muted" >
+          <div class="col align-items-start text-muted">
             +
           </div>
         </div>
-        <div class="row" >
-          <div class="col" >
+        <div class="row">
+          <div class="col">
             "Speak English"
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col align-items-end">
-            <div class="float-right text-muted" >
+            <div class="float-right text-muted">
               -
             </div>
           </div>
           <div class="col">
             <input style="width: 30vw" id="speak_english" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
           </div>
-          <div class="col align-items-start text-muted" >
+          <div class="col align-items-start text-muted">
             +
           </div>
         </div>
-        <div class="row" >
-          <div class="col"  >
+        <div class="row">
+          <div class="col">
             "Speak French"
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col align-items-end">
-            <div class="float-right text-muted" >
+            <div class="float-right text-muted">
               -
             </div>
           </div>
           <div class="col">
             <input style="width: 30vw" id="speak_french" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
           </div>
-          <div class="col align-items-start text-muted" >
+          <div class="col align-items-start text-muted">
             +
           </div>
         </div>
-        <div class="row" >
-          <div class="col" >
+        <div class="row">
+          <div class="col">
             "Speak German"
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col align-items-end">
-            <div class="float-right text-muted" >
+            <div class="float-right text-muted">
               -
             </div>
           </div>
           <div class="col">
             <input style="width: 30vw" id="speak_german" type="text" data-slider-ticks="[0, 1, 2, 3, 4,5,6,7,8,9,10]" data-slider-ticks-snap-bounds="1" />
           </div>
-          <div class="col align-items-start text-muted" >
+          <div class="col align-items-start text-muted">
             +
           </div>
         </div>
 
         <button class="btn btn-primary float-right mt-3" id="saveSensitivities">Save</button>
+
+      </div>
+
+    </div>
+
+    <div class="card mt-5">
+      <div class="card-header">
+        NGROK
+      </div>
+      <div class="card-body">
+
+
+        <button class="btn btn-primary float-right mt-3" id="ngrok">NGROK</button>
 
       </div>
 
@@ -286,6 +299,10 @@
         sensitivity = { "hello": hello_teddy, "explore": explore, "english": speak_english, "french": speak_french, "german": speak_german }
         sensitivity_json = JSON.stringify(sensitivity);
         websocket.send("__SENSITIVITY__" + sensitivity_json);
+      });
+
+      $("ngrok").click(function () {
+        websocket.send("__NGROK__");
       });
 
 
