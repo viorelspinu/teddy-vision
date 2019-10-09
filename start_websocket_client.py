@@ -5,6 +5,7 @@ from datetime import datetime
 from voice_codes_constants import *
 import simplejson as json
 from configuration_service import ConfigurationService
+from subprocess import Popen, PIPE
 
 websocket = WebSocket('http://116.203.129.161:80/chat')
 cloud_service = CloudService()
@@ -35,3 +36,7 @@ for event in persist(websocket):
             text = text.replace("__REQUEST_CONFIGURATION__", "")
             websocket.send_text("__REQUEST_RESPONSE__" + json.dumps(configuration_service.read_configuration()).decode('utf8'))
 
+        if (text.startswith("__NGROK__")):
+            process = Popen(['/home/pi/ngrok', 'tcp', '22'], stdout=PIPE, stderr=PIPE)
+            stdout, stderr = process.communicate()
+            print(stdout)
