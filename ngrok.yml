@@ -1,0 +1,5 @@
+authtoken: 1RyAsOLd2UwtPvFGsIzwefhqk8L_7BqGBvcCx8RihPBXYmPoh
+tunnels:
+  teddy:
+    proto: tcp
+    addr: 22
