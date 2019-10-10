@@ -47,4 +47,4 @@ for event in persist(websocket):
             tunnel = r.json()["tunnels"][0]["public_url"]
             ssh_message = "ssh pi@{} -p {}".format(tunnel[6:tunnel.index(':', 5)], tunnel[tunnel.index(':', 5)+1:])
             print(ssh_message)
-            websocket.send_text("__NGROK_SSH_COMMAND__" + ssh_message)
+            websocket.send_text("__NGROK_SSH_COMMAND__" + str(ssh_message))
