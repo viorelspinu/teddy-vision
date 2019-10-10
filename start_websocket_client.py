@@ -7,6 +7,7 @@ import simplejson as json
 from configuration_service import ConfigurationService
 from subprocess import Popen, PIPE
 import time
+import requests
 
 websocket = WebSocket('http://116.203.129.161:80/chat')
 cloud_service = CloudService()
@@ -40,7 +41,7 @@ for event in persist(websocket):
         if (text.startswith("__NGROK__")):
             ngrok_path = "./start_ngrok.sh"
             p = Popen(["nohup", ngrok_path])
-            time.sleep(10)
+            time.sleep(5)
 
             r = requests.get("http://localhost:4040/api/tunnels")
             tunnel = r.json()["tunnels"][0]["public_url"]            
