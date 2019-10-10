@@ -19,17 +19,17 @@ export GOOGLE_API_KEY=__YOUR_GOOGLE_API_KEY___
 export SPEECH_SERVICE_KEY=__YOUR_MICROSOFT_COGNITIVE_SERVICES_API_KEY
 
 aplay ./wav/up_and_running.wav
-python ./configuration_service.py
-python ./say_ip_address.py
-python ./start_server.py &
+python ./configuration_service.py  > /home/pi/configuration_service.log
+#python ./say_ip_address.py
+python ./start_server.py  > /home/pi/start_server.log &
 
-./start_websocket_client.sh &
+./start_websocket_client.sh  > /home/pi/start_websocket_client.log &
 
 while true
 do
-python ./wait_for_trigger.py
+python ./wait_for_trigger.py > /home/pi/wait_for_trigger.log
 
-python ./run_action_on_hotword.py
+python ./run_action_on_hotword.py > /home/pi/run_action_on_hotword.log
 
 sleep 0.5
 
