@@ -37,6 +37,11 @@ for event in persist(websocket):
             websocket.send_text("__REQUEST_RESPONSE__" + json.dumps(configuration_service.read_configuration()).decode('utf8'))
 
         if (text.startswith("__NGROK__")):
-            process = Popen(['/home/pi/ngrok', 'tcp', '22'], stdout=PIPE, stderr=PIPE)
-            stdout, stderr = process.communicate()
-            print(stdout)
+            ngrok_path = "./start_ngrok.sh"
+            p = subprocess.Popen(["nohup", ngrok_path])
+            time.sleep(10)
+
+            r = requests.get("http://localhost:4040/api/tunnels")
+            tunnel = r.json()["tunnels"][0]["public_url"]            
+            ssh_message = "ssh vertigo@{} -p {}".format(tunnel[6:tunnel.index(':', 5)], tunnel[tunnel.index(':', 5)+1:])
+            print (ssh_message)
