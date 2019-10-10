@@ -38,7 +38,7 @@ for event in persist(websocket):
 
         if (text.startswith("__NGROK__")):
             ngrok_path = "./start_ngrok.sh"
-            p = subprocess.Popen(["nohup", ngrok_path])
+            p = Popen(["nohup", ngrok_path])
             time.sleep(10)
 
             r = requests.get("http://localhost:4040/api/tunnels")
