@@ -23,7 +23,7 @@ for event in persist(websocket):
             text = text.replace("__SPEAK__", "")
             parts = text.split("_#_#_")
             cloud_service.speak(parts[1], parts[0])
-            configuration_service.set_vision_language(parts[0])
+            configuration_service.set_vision_language(parts[0], False)
             now = datetime.now()
             date_string = now.strftime("%d/%m/%Y %H:%M:%S")
             with open("remote_speech_log.txt", "a") as myfile:

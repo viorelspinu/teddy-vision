@@ -19,18 +19,21 @@ class ConfigurationService:
         with open(self.__CONFIGURATION_FILE, "w") as f:
             json.dump(data, f)
 
-    def set_vision_language(self, language_code):
+    def set_vision_language(self, language_code, reply=False):
         configuration_data = self.read_configuration()
         configuration_data['language'] = language_code
         self.write_configuration(configuration_data)
         if (language_code == TTS_LANGUAGE_CODE_ENGLISH):
-            os.system("aplay ./wav/english.wav")
+            if (reply):
+                os.system("aplay ./wav/english.wav")
             print("will use english")
         if (language_code == TTS_LANGUAGE_CODE_FRENCH):
-            os.system("aplay ./wav/french.wav")
+            if (reply):
+                os.system("aplay ./wav/french.wav")
             print("will use french")
         if (language_code == TTS_LANGUAGE_CODE_GERMAN):
-            os.system("aplay ./wav/german.wav")
+            if (reply):
+                os.system("aplay ./wav/german.wav")
             print("will use german")
 
     def set_sensitivities(self, sensitivities):
